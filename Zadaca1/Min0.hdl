@@ -1,0 +1,11 @@
+CHIP Min0
+{
+	IN a[16], b[16];
+	OUT	out[16];
+	
+	PARTS:
+	Less0(a = a, b = b, out = out1);
+	Not(in = out1, out = outn);
+	Mux16(a = a, b = b, sel = outn, out = out);
+
+}

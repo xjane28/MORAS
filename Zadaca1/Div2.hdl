@@ -1,0 +1,8 @@
+CHIP Div2 
+{
+    IN in[16];
+    OUT out[16];
+
+    PARTS:
+    ShiftRight16(in=in, out=out);
+}

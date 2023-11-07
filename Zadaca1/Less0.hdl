@@ -1,0 +1,44 @@
+CHIP Less0 
+{
+	IN a[16], b[16];
+	OUT out;
+
+	PARTS:
+	Not16(in = b, out = nb);
+	Add16(a = nb, b[1..15] = false, b[0] = true,
+		out[0] = nb0,
+		out[1] = nb1,
+		out[2] = nb2,
+		out[3] = nb3,
+		out[4] = nb4,
+		out[5] = nb5,
+		out[6] = nb6,
+		out[7] = nb7,
+		out[8] = nb8,
+		out[9] = nb9,
+		out[10] = nb10,
+		out[11] = nb11,
+		out[12] = nb12,
+		out[13] = nb13,
+		out[14] = nb14,
+		out[15] = nb15);
+
+	HalfAdder(b=nb0, a=a[0], sum=s0, carry=c1);
+	FullAdder(b=nb1, a=a[1], c=c1, sum=s1, carry=c2);
+	FullAdder(b=nb2, a=a[2], c=c2, sum=s2, carry=c3);
+	FullAdder(b=nb3, a=a[3], c=c3, sum=s3, carry=c4);
+	FullAdder(b=nb4, a=a[4], c=c4, sum=s4, carry=c5);
+	FullAdder(b=nb5, a=a[5], c=c5, sum=s5, carry=c6);
+	FullAdder(b=nb6, a=a[6], c=c6, sum=s6, carry=c7);
+	FullAdder(b=nb7, a=a[7], c=c7, sum=s7, carry=c8);
+	FullAdder(b=nb8, a=a[8], c=c8, sum=s8, carry=c9);
+	FullAdder(b=nb9, a=a[9], c=c9, sum=s9, carry=c10);
+	FullAdder(b=nb10, a=a[10], c=c10, sum=s10, carry=c11);
+	FullAdder(b=nb11, a=a[11], c=c11, sum=s11, carry=c12);
+	FullAdder(b=nb12, a=a[12], c=c12, sum=s12, carry=c13);
+	FullAdder(b=nb13, a=a[13], c=c13, sum=s13, carry=c14);
+	FullAdder(b=nb14, a=a[14], c=c14, sum=s14, carry=c15);
+	FullAdder(b=nb15, a=a[15], c=c15, sum=s15, carry=c16);
+
+	Not(in = c16, out = out);
+}
