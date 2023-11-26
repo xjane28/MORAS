@@ -1,0 +1,9 @@
+CHIP Complement 
+{
+	IN in[16];
+	OUT out[16];
+	
+	PARTS:
+	Not16(in=in, out=notIn);
+	Inc16(in=notIn, out=out);
+}
