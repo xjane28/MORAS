@@ -1,0 +1,109 @@
+CHIP Clz {
+    IN in[16];
+    OUT out[16];
+
+    PARTS:
+
+    //Provjera je li MSB 0 ili 1
+    Or(a=in[15], b=false, out=or15);
+    Not(in=or15, out=notOr15);
+
+    //Dodavanje 1 u rezultat ako je MSB jednak 0
+    Add16(a=false, b[0]=notOr15, b[1..15]=false, out=temp15);
+    //Uz pomoc flaga zaustavljam brojanje ako pronađem prvu 1
+    And(a=notOr15, b=true, out=flag15);    
+
+    //Proces se ponavlja za ostale bitove
+    Or(a=in[14], b=false, out=or14);
+    Not(in=or14, out=notOr14);
+    //Dodajem 1 u rezultat ako je in[14] jednak 0
+    Add16(a=temp15, b[0]=notOr14, b[1..15]=false, out=temp14);
+    And(a=flag15, b=notOr14, out=flag14);
+    //Ako smo pronasli 1, onda postavimo flag na 0 i ne brojimo ostalo
+    Mux16(a=temp15, b=temp14, sel=flag14, out=res14);
+
+    //Isto tako za ostale bitove
+    Or(a=in[13], b=false, out=or13);
+    Not(in=or13, out=notOr13);
+    Add16(a=temp14, b[0]=notOr13, b[1..15]=false, out=temp13);
+    And(a=flag14, b=notOr13, out=flag13);
+    Mux16(a=res14, b=temp13, sel=flag13, out=res13);
+
+    Or(a=in[12], b=false, out=or12);
+    Not(in=or12, out=notOr12);
+    Add16(a=temp13, b[0]=notOr12, b[1..15]=false, out=temp12);
+    And(a=flag13, b=notOr12, out=flag12);
+    Mux16(a=res13, b=temp12, sel=flag12, out=res12);
+
+    Or(a=in[11], b=false, out=or11);
+    Not(in=or11, out=notOr11);
+    Add16(a=temp12, b[0]=notOr11, b[1..15]=false, out=temp11);
+    And(a=flag12, b=notOr11, out=flag11);
+    Mux16(a=res12, b=temp11, sel=flag11, out=res11);
+
+    Or(a=in[10], b=false, out=or10);
+    Not(in=or10, out=notOr10);
+    Add16(a=temp11, b[0]=notOr10, b[1..15]=false, out=temp10);
+    And(a=flag11, b=notOr10, out=flag10);
+    Mux16(a=res11, b=temp10, sel=flag10, out=res10);
+
+    Or(a=in[9], b=false, out=or9);
+    Not(in=or9, out=notOr9);
+    Add16(a=temp10, b[0]=notOr9, b[1..15]=false, out=temp9);
+    And(a=flag10, b=notOr9, out=flag9);
+    Mux16(a=res10, b=temp9, sel=flag9, out=res9);
+
+    Or(a=in[8], b=false, out=or8);
+    Not(in=or8, out=notOr8);
+    Add16(a=temp9, b[0]=notOr8, b[1..15]=false, out=temp8);
+    And(a=flag9, b=notOr8, out=flag8);
+    Mux16(a=res9, b=temp8, sel=flag8, out=res8);
+
+    Or(a=in[7], b=false, out=or7);
+    Not(in=or7, out=notOr7);
+    Add16(a=temp8, b[0]=notOr7, b[1..15]=false, out=temp7);
+    And(a=flag8, b=notOr7, out=flag7);
+    Mux16(a=res8, b=temp7, sel=flag7, out=res7);
+
+    Or(a=in[6], b=false, out=or6);
+    Not(in=or6, out=notOr6);
+    Add16(a=temp7, b[0]=notOr6, b[1..15]=false, out=temp6);
+    And(a=flag7, b=notOr6, out=flag6);
+    Mux16(a=res7, b=temp6, sel=flag6, out=res6);
+
+    Or(a=in[5], b=false, out=or5);
+    Not(in=or5, out=notOr5);
+    Add16(a=temp6, b[0]=notOr5, b[1..15]=false, out=temp5);
+    And(a=flag6, b=notOr5, out=flag5);
+    Mux16(a=res6, b=temp5, sel=flag5, out=res5);
+
+    Or(a=in[4], b=false, out=or4);
+    Not(in=or4, out=notOr4);
+    Add16(a=temp5, b[0]=notOr4, b[1..15]=false, out=temp4);
+    And(a=flag5, b=notOr4, out=flag4);
+    Mux16(a=res5, b=temp4, sel=flag4, out=res4);
+
+    Or(a=in[3], b=false, out=or3);
+    Not(in=or3, out=notOr3);
+    Add16(a=temp4, b[0]=notOr3, b[1..15]=false, out=temp3);
+    And(a=flag4, b=notOr3, out=flag3);
+    Mux16(a=res4, b=temp3, sel=flag3, out=res3);
+
+    Or(a=in[2], b=false, out=or2);
+    Not(in=or2, out=notOr2);
+    Add16(a=temp3, b[0]=notOr2, b[1..15]=false, out=temp2);
+    And(a=flag3, b=notOr2, out=flag2);
+    Mux16(a=res3, b=temp2, sel=flag2, out=res2);
+
+    Or(a=in[1], b=false, out=or1);
+    Not(in=or1, out=notOr1);
+    Add16(a=temp2, b[0]=notOr1, b[1..15]=false, out=temp1);
+    And(a=flag2, b=notOr1, out=flag1);
+    Mux16(a=res2, b=temp1, sel=flag1, out=res1);
+
+    Or(a=in[0], b=false, out=or0);
+    Not(in=or0, out=notOr0);
+    Add16(a=temp1, b[0]=notOr0, b[1..15]=false, out=temp0);
+    And(a=flag1, b=notOr0, out=flag0);
+    Mux16(a=res1, b=temp0, sel=flag0, out=out);
+}

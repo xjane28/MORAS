@@ -1,0 +1,138 @@
+CHIP Log2 {
+    IN in[16];
+    OUT out[16];
+
+    PARTS:
+    // bit 16
+    And(a = in[15], b = true, out = ng);
+
+    Add16(a[0] = ng, a[1] = ng, a[2] = ng, a[3] = ng, a[4] = ng, a[5] = ng, a[6] = ng, a[7] = ng, a[8] = ng, a[9] = ng, a[10] = ng, a[11] = ng, a[12] = ng, a[13] = ng, a[14] = ng, a[15] = ng,
+        b = false, out = sum0);
+
+    Not(in = ng, out = nng);
+
+    And(a = in[15], b = nng, out = num15);
+    And(a = in[14], b = nng, out = num14);
+    And(a = in[13], b = nng, out = num13);
+    And(a = in[12], b = nng, out = num12);
+    And(a = in[11], b = nng, out = num11);
+    And(a = in[10], b = nng, out = num10);
+    And(a = in[9], b = nng, out = num9);
+    And(a = in[8], b = nng, out = num8);
+    And(a = in[7], b = nng, out = num7);
+    And(a = in[6], b = nng, out = num6);
+    And(a = in[5], b = nng, out = num5);
+    And(a = in[4], b = nng, out = num4);
+    And(a = in[3], b = nng, out = num3);
+    And(a = in[2], b = nng, out = num2);
+    And(a = in[1], b = nng, out = num1);
+    And(a = in[0], b = nng, out = num0);
+
+    // bit 15
+    And(a = num14, b = nng, out = out1);
+
+    Add16(a[0] = false, a[1] = out1, a[2] = out1, a[3] = out1, a[4..15] = false , b = sum0, out = sum1);
+
+    Not(in = out1, out = nout1);
+
+    // bit 14
+    And(a = num13, b = nout1, out = out2);
+
+    Add16(a[0] = out2, a[1] = false, a[2] = out2, a[3] = out2, a[4..15] = false , b = sum1, out = sum2);
+
+    Not(in = out2, out = nout2);
+
+    // bit 13
+    And(a = nout2, b = nout1, out = nout02);
+    And(a = num12, b = nout02, out = out3);
+
+    Add16(a[0] = false, a[1] = false, a[2] = out3, a[3] = out3, a[4..15] = false , b = sum2, out = sum3);
+
+    Not(in = out3, out = nout3);
+
+    // bit 12
+    And(a = nout02, b = nout3, out = nout03);
+    And(a = num11, b = nout03, out = out4);
+
+    Add16(a[0] = out4, a[1] = out4, a[2] = false, a[3] = out4, a[4..15] = false , b = sum3, out = sum4);
+
+    Not(in = out4, out = nout4);
+
+    // bit 11
+    And(a = nout03, b = nout4, out = nout04);
+    And(a = num10, b = nout04, out = out5);
+
+    Add16(a[0] = false, a[1] = out5, a[2] = false, a[3] = out5, a[4..15] = false , b = sum4, out = sum5);
+
+    Not(in = out5, out = nout5);
+
+    // bit 10
+    And(a = nout04, b = nout5, out = nout05);
+    And(a = num9, b = nout05, out = out6);
+
+    Add16(a[0] = out6, a[1] = false, a[2] = false, a[3] = out6, a[4..15] = false , b = sum5, out = sum6);
+
+    Not(in = out6, out = nout6);
+
+    // bit 9
+    And(a = nout05, b = nout6, out = nout06);
+    And(a = num8, b = nout06, out = out7);
+
+    Add16(a[0] = false, a[1] = false, a[2] = false, a[3] = out7, a[4..15] = false , b = sum6, out = sum7);
+
+    Not(in = out7, out = nout7);
+
+    // bit 8
+    And(a = nout06, b = nout7, out = nout07);
+    And(a = num7, b = nout07, out = out8);
+
+    Add16(a[0] = out8, a[1] = out8, a[2] = out8, a[3..15] = false , b = sum7, out = sum8);
+
+    Not(in = out8, out = nout8);
+
+    // bit 7
+    And(a = nout07, b = nout8, out = nout08);
+    And(a = num6, b = nout08, out = out9);
+
+    Add16(a[0] = false, a[1] = out9, a[2] = out9, a[3..15] = false , b = sum8, out = sum9);
+
+    Not(in = out9, out = nout9);
+
+    // bit 6
+    And(a = nout08, b = nout9, out = nout09);
+    And(a = num5, b = nout09, out = out10);
+
+    Add16(a[0] = out10, a[1] = false, a[2] = out10, a[3..15] = false , b = sum9, out = sum10);
+
+    Not(in = out10, out = nout10);
+
+    // bit 5
+    And(a = nout09, b = nout10, out = nout010);
+    And(a = num4, b = nout010, out = out11);
+
+    Add16(a[0] = false, a[1] = false, a[2] = out11, a[3..15] = false , b = sum10, out = sum11);
+
+    Not(in = out11, out = nout11);
+
+    // bit 4
+    And(a = nout010, b = nout11, out = nout011);
+    And(a = num3, b = nout011, out = out12);
+
+    Add16(a[0] = out12, a[1] = out12, a[2..15] = false , b = sum11, out = sum12);
+
+    Not(in = out12, out = nout12);
+
+    // bit 3
+    And(a = nout011, b = nout12, out = nout012);
+    And(a = num2, b = nout012, out = out13);
+
+    Add16(a[0] = false, a[1] = out13, a[2..15] = false , b = sum12, out = sum13);
+
+    Not(in = out13, out = nout13);
+
+    // bit 2
+    And(a = nout012, b = nout13, out = nout013);
+    And(a = num1, b = nout013, out = out14);
+    
+    Add16(a[0] = out14, a[1..15] = false , b = sum13, out = out);    
+}
