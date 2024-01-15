@@ -1,0 +1,55 @@
+function pell 3
+    push argument 0
+    push constant 0
+    eq
+    if-goto pell_zero
+
+    push argument 0
+    push constant 1
+    eq
+    if-goto pell_one
+
+    push constant 2
+    pop local 0
+
+    push constant 0
+    pop local 1
+
+    push constant 1
+    pop local 2
+
+    label pell_loop_start
+        push local 0
+        push argument 0
+        gt
+        if-goto pell_other
+
+        push local 1
+        push local 2
+        push local 2
+        add
+        add
+        push local 2
+        pop local 1
+        pop local 2
+
+        push local 0
+        push constant 1
+        add
+        pop local 0
+
+        goto pell_loop_start
+
+    label pell_other
+        push local 2
+
+    label pell_end
+    return
+
+    label pell_zero
+        push constant 0
+        goto pell_end
+
+    label pell_one
+        push constant 1
+        goto pell_end

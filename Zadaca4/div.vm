@@ -1,0 +1,27 @@
+function div 2
+    push constant 0
+    pop local 0
+    push argument 0
+    pop local 1 
+
+    label loop_div
+        push local 1 
+        push argument 1
+        lt
+        if-goto end_div
+
+        push local 0
+        push constant 1 
+        add
+        pop local 0
+
+        push local 1
+        push argument 1
+        sub
+        pop local 1
+
+        goto loop_div
+
+    label end_div
+    push local 0
+    return
