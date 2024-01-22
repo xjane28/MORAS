@@ -1,0 +1,34 @@
+class Main{
+    function void main(){
+        var Vint v1,v2,v3;
+
+        let v1 = Vint.new(3);
+        let v2 = Vint.new(3);
+        let v3 = Vint.new(3);
+
+        do v1.set(0,3);
+        do v1.set(1,5);
+        do v1.set(2,11);
+
+        do v2.set(0,3);
+        do v2.set(1,5);
+        do v2.set(2,11);
+
+        do v3.set(0,11);
+        do v3.set(1,3);
+        do v3.set(2,5);
+
+        do Output.printInt(v1.len());
+        do Output.printString(" ");
+        do Output.printInt(v1.get(1));
+        do Output.println();
+        do Output.printInt(Vint.is_eq(v1,v2));
+        do Output.println();
+        do Output.printInt(Vint.elems(v2,v3));
+        do Output.println();
+        do v1.resize(2);
+        do v1.print();
+
+        return;
+    }
+}
