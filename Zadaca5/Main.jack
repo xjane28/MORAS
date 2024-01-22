@@ -1,0 +1,26 @@
+class Main{
+
+    function void main(){
+
+        var int n, i;
+        var Array A;
+
+        let i = 0;
+        let n = Keyboard.readInt("Unesite duljinu polja: ");
+        let A = Array.new(n);
+
+        while(i < n){
+            let A[i] = Keyboard.readInt("Unesite element polja: ");
+            let i = i + 1;
+        }
+
+        do quicksort.qsort(A,0,n-1);
+
+        do quicksort.print(A,n);
+
+        do A.dispose();
+
+
+        return;
+    }
+}
