@@ -1,0 +1,435 @@
+function Vint.len 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Vint.power 2
+push constant 1
+pop local 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 1
+push argument 1
+lt
+not
+if-goto WHILE_END0
+push local 0
+push argument 0
+call Math.multiply 2
+pop local 0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push local 0
+return
+function Vint.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+push constant 0
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+pop this 0
+push this 0
+call Array.new 1
+pop this 1
+push pointer 0
+return
+label IF_FALSE0
+push constant 2
+push argument 0
+call Vint.power 2
+pop this 0
+push this 0
+call Array.new 1
+pop this 1
+push pointer 0
+return
+function Vint.set 0
+push argument 0
+pop pointer 0
+push argument 1
+push this 0
+eq
+push argument 1
+push this 0
+gt
+or
+push argument 1
+push constant 0
+lt
+or
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 13
+call String.new 1
+push constant 73
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 112
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 0
+call String.new 1
+call Output.println 1
+pop temp 0
+push constant 0
+return
+label IF_FALSE0
+push argument 1
+push this 1
+add
+push argument 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+return
+function Vint.get 0
+push argument 0
+pop pointer 0
+push argument 1
+push this 0
+eq
+push argument 1
+push this 0
+gt
+or
+push argument 1
+push constant 0
+lt
+or
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 13
+call String.new 1
+push constant 73
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 112
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 0
+call String.new 1
+call Output.println 1
+pop temp 0
+push constant 1
+neg
+return
+label IF_FALSE0
+push argument 1
+push this 1
+add
+pop pointer 1
+push that 0
+return
+function Vint.resize 3
+push argument 0
+pop pointer 0
+push this 0
+push constant 2
+push argument 1
+call Vint.power 2
+call Math.min 2
+pop local 0
+push constant 0
+pop local 1
+push constant 2
+push argument 1
+call Vint.power 2
+call Array.new 1
+pop local 2
+push argument 1
+push constant 0
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+call Array.dispose 1
+pop temp 0
+push constant 1
+pop this 0
+push this 0
+call Array.new 1
+pop this 1
+push constant 0
+return
+label IF_FALSE0
+label WHILE_EXP0
+push local 1
+push local 0
+lt
+not
+if-goto WHILE_END0
+push local 1
+push local 2
+add
+push local 1
+push this 1
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push this 1
+call Array.dispose 1
+pop temp 0
+push constant 2
+push argument 1
+call Vint.power 2
+pop this 0
+push local 2
+pop this 1
+push constant 0
+return
+function Vint.is_eq 1
+push constant 0
+pop local 0
+push argument 0
+call Vint.len 1
+push argument 1
+call Vint.len 1
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+label WHILE_EXP0
+push local 0
+push argument 0
+call Vint.len 1
+lt
+not
+if-goto WHILE_END0
+push argument 0
+push local 0
+call Vint.get 2
+push argument 1
+push local 0
+call Vint.get 2
+eq
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+return
+label IF_FALSE1
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+not
+return
+function Vint.elems 4
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+push argument 0
+call Vint.len 1
+call Array.new 1
+pop local 2
+push argument 1
+call Vint.len 1
+call Array.new 1
+pop local 3
+push argument 0
+call Vint.len 1
+push argument 1
+call Vint.len 1
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+label WHILE_EXP0
+push local 0
+push argument 0
+call Vint.len 1
+lt
+not
+if-goto WHILE_END0
+push local 0
+push local 2
+add
+push argument 0
+push local 0
+call Vint.get 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push local 3
+add
+push argument 1
+push local 0
+call Vint.get 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 2
+push constant 0
+push argument 0
+call Vint.len 1
+push constant 1
+sub
+call quicksort.qsort 3
+pop temp 0
+push local 3
+push constant 0
+push argument 1
+call Vint.len 1
+push constant 1
+sub
+call quicksort.qsort 3
+pop temp 0
+label WHILE_EXP1
+push local 1
+push argument 0
+call Vint.len 1
+lt
+not
+if-goto WHILE_END1
+push local 1
+push local 2
+add
+pop pointer 1
+push that 0
+push local 1
+push local 3
+add
+pop pointer 1
+push that 0
+eq
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+return
+label IF_FALSE1
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP1
+label WHILE_END1
+push constant 0
+not
+return
+function Vint.print 1
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 0
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 1
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 1
+call String.new 1
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+call Output.println 0
+pop temp 0
+push constant 0
+return
