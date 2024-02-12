@@ -1,0 +1,38 @@
+/*
+	Square game.
+   
+*/
+class Square
+{
+	static int i, j;
+	field char c;
+	/*
+	Test prvog zadatka
+	//Test prvog zadatka
+	*/
+	static string s;
+	field boolean u, v, w, x, y, z;
+    
+    method void test(int x, int y, char ctest)
+	{
+        var int a, b, c;
+        var Array A, B, C;
+
+		//let a = 100000;
+		//let b = 1a220;
+
+		let A[1] = 25 - a;
+		let A[d] = c - (3 + a);
+        let A[a+1] = 1;
+        
+
+		//return a;
+        //return A[3];
+        //return;
+		//return (a - 13);
+        //return (13 - b);
+        //return (c - d);
+		return;
+	}
+
+}
