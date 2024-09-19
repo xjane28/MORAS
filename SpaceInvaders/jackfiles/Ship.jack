@@ -1,0 +1,71 @@
+class Ship{
+    field int x;
+    field int y;
+
+    constructor Ship new(int xs, int ys){
+        let x = xs;
+        let y = ys;
+
+        return this;
+    }
+
+    method void dispose(){
+        do Memory.deAlloc(this);
+        
+        return;
+    }
+
+    method void draw(){
+        do Objects.drawShip(x, y, true);
+        
+        return;
+    }
+
+    method void move_left() {
+    if (x - 2 > 50) { 
+        do Objects.drawShip(x, y, false);
+        let x = x - 2;
+        do Objects.drawShip(x, y, true);
+    }
+    if (x - 2 = 50) {
+        do Objects.drawShip(x, y, false);
+        let x = 420;
+        do Objects.drawShip(x, y, true);
+    }
+    if (x - 2 < 50) {
+        do Objects.drawShip(x, y, false);
+        let x = 420;
+        do Objects.drawShip(x, y, true);
+    }
+
+    return;
+}
+
+method void move_right() {
+    if (x + 2 < 430) { 
+        do Objects.drawShip(x, y, false);
+        let x = x + 2;
+        do Objects.drawShip(x, y, true);
+    }
+    if (x + 2 = 430) {
+        do Objects.drawShip(x, y, false);
+        let x = 45;
+        do Objects.drawShip(x, y, true);
+    }
+    if (x + 2 > 430) {
+        do Objects.drawShip(x, y, false);
+        let x = 45;
+        do Objects.drawShip(x, y, true);
+    }
+
+    return;
+}
+
+    method int getX(){
+        return x;
+    }
+
+    method int getY(){
+        return y;
+    }
+}

@@ -1,0 +1,66 @@
+class GameScreen{
+    static int level_number;
+    static int score;
+    static int initial_score;
+    static int initial_lives;
+    static int lives;
+
+    function void showGameScreen(int level, int init_lives){
+        do Screen.clearScreen();
+        do GameScreen.gamescene(level, 0, init_lives);
+
+        return;
+    }
+
+    function void gamescene(int level, int given_score, int init_lives){
+        let initial_score = 0;
+        let level_number = level;
+        do Output.moveCursor(0,0);
+        do Output.printString("Mode: ");
+        do Output.moveCursor(0,6);
+        if(level_number = 49){
+            let level_number = 1;
+            let init_lives = 3;
+            do Output.printInt(level_number);
+        }
+        if(level_number = 50){
+            let level_number = 2;
+            let init_lives = 2;
+            do Output.printInt(level_number);
+        }
+        if(level_number = 51){
+            let level_number = 3;
+            let init_lives = 1;
+            do Output.printInt(level_number);
+        }
+
+        do Output.moveCursor(1,0);
+        do Output.printString("Score: ");
+        do Output.moveCursor(1,6);
+        do Output.printInt(initial_score);
+
+        do Output.moveCursor(2,0);
+        do Output.printString("Lives: ");
+        do Output.moveCursor(2,6);
+        do Output.printInt(init_lives);
+
+        do Screen.drawLine(0, 35, 511, 35); 
+        do Screen.drawLine(0, 36, 511, 36); 
+        
+        return;
+    }
+
+    function void update_score(int updated_score){
+        do Output.moveCursor(1,6);
+        do Output.printInt(updated_score);
+
+        return;
+    }
+
+     function void update_lives(int updated_lives){
+        do Output.moveCursor(2,6);
+        do Output.printInt(updated_lives);
+
+        return;
+    }
+}

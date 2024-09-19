@@ -1,0 +1,193 @@
+class StartScreen{
+    function void show(){
+        do Screen.clearScreen();
+        do StartScreen.gameTitle();
+        
+        return;
+    }
+
+    function void gameTitle(){
+    var string title;
+    let title = "SPACE INVADERS";
+
+    // Display the title
+    do Output.moveCursor(7, 25);
+    do Output.printString(title);
+    do Output.println();
+
+    // Draw decorative lines
+    do Screen.drawLine(190, 95, 320, 95);
+    do Screen.drawLine(190, 96, 320, 96);
+    do Screen.drawLine(190, 97, 320, 97);
+
+    // Display game mode selection
+    do Output.moveCursor(10, 21);
+    do Output.printString("Press 1 for easy mode.");
+    do Output.moveCursor(11, 21);
+    do Output.printString("Press 2 for medium mode.");
+    do Output.moveCursor(12, 21);
+    do Output.printString("Press 3 for hard mode.");
+    do Output.println();
+
+    // Display controls for the game
+    do Output.moveCursor(14, 21); // Adjusted position for game controls
+    do Output.printString("Use left arrow to move left.");
+    do Output.moveCursor(15, 21);
+    do Output.printString("Use right arrow to move right.");
+    do Output.moveCursor(16, 21);
+    do Output.printString("Use up arrow to shoot.");
+    do Output.println();
+    do Output.println();
+    do Output.println();
+    do Output.println();
+    do Output.println();
+    do Output.println();
+    do Output.println(); 
+
+
+    // Display aliens
+    do Objects.drawAlien3(50, 30, true);
+    do Objects.drawAlien1(50, 210, true);
+    do Objects.drawAlien2(400, 30, true);
+    do Objects.drawAlien3(350, 210, true);
+    do Objects.drawAlien1(230, 220, true);
+    do Objects.drawAlien2(450, 70, true);
+    do Objects.drawAlien3(65, 165, true);
+
+    return;
+}
+
+    function void showGameOver() {
+    var string over;
+    var int j;
+    var Alien1 alien1_1;
+    var Alien1 alien1_2;
+    var Alien1 alien1_3;
+    var Alien2 alien2_1;
+    var Alien2 alien2_2;
+    var Alien2 alien2_3;
+    var Alien3 alien3_1;
+    var Alien3 alien3_2;
+    var Alien3 alien3_3;
+
+    // Clear the screen and print "GAME OVER!"
+    do Screen.clearScreen();
+    let over = "GAME OVER!";
+    do Output.moveCursor(7, 25);
+    do Output.printString(over);
+
+    // Create alien instances
+    let alien1_1 = Alien1.new(240, 100);
+    let alien2_1 = Alien2.new(160, 150);
+    let alien3_1 = Alien3.new(50, 30);
+    let alien1_2 = Alien1.new(50, 210);
+    let alien2_2 = Alien2.new(400, 30);
+    let alien3_2 = Alien3.new(350, 210);
+    let alien1_3 = Alien1.new(230, 220);
+    let alien2_3 = Alien2.new(380, 150);
+    let alien3_3 = Alien3.new(65, 165);
+
+    // Draw aliens
+    do alien1_1.draw();
+    do alien2_1.draw();
+    do alien3_1.draw();
+    do alien1_2.draw();
+    do alien2_2.draw();
+    do alien3_2.draw();
+    do alien1_3.draw();
+    do alien2_3.draw();
+    do alien3_3.draw();
+
+    return;
+}
+
+
+    function void showWin(){
+        var string win;
+        do Screen.clearScreen();
+        let win = "YOU WIN!";
+        do Output.moveCursor(5,25);
+        do Output.printString(win);
+
+        do Objects.drawAlien1(240, 100, true);
+        do Objects.drawAlien2(160, 150, true);
+        do Objects.drawAlien3(50, 30, true);
+        do Objects.drawAlien1(50, 210, true);
+        do Objects.drawAlien2(400, 30, true);
+        do Objects.drawAlien3(350, 210, true);
+        do Objects.drawAlien1(230, 220, true);
+        do Objects.drawAlien2(380, 150, true);
+        do Objects.drawAlien3(65, 165, true);
+
+        return;
+    }
+
+     function void animateAliens() {
+        var int j;
+        var Alien1 alien1_1;
+        var Alien1 alien1_2;
+        var Alien2 alien2_1;
+        var Alien2 alien2_2;
+        var Alien3 alien3_1;
+         var Alien3 alien3_2;
+        var Alien3 alien3_3;
+        var Alien2 alien2_3;
+        var Alien1 alien1_3;
+        
+         // Create alien instances
+        let alien3_1 = Alien3.new(50, 30);
+        let alien1_1 = Alien1.new(50, 210);
+        let alien2_1 = Alien2.new(400, 30);
+        let alien3_2 = Alien3.new(350, 210);
+        let alien1_2 = Alien1.new(230, 220);
+        let alien2_2 = Alien2.new(380, 150);
+        let alien3_3 = Alien3.new(65, 165);
+        let alien2_3 = Alien2.new(160, 150);
+        let alien1_3 = Alien1.new(240, 100);
+
+         // Draw aliens
+        do alien3_1.draw();
+        do alien1_1.draw();
+        do alien2_1.draw();
+        do alien3_2.draw();
+        do alien1_2.draw();
+        do alien2_2.draw();
+        do alien3_3.draw();
+        do alien2_3.draw();
+        do alien1_3.draw();
+
+        // Loop to animate aliens
+       let j = 0;
+       while (j < 10) { // Change the number of iterations for a longer or shorter animation
+        // Move right
+       do alien3_1.move_up();
+       do alien1_1.move_up();
+       do alien2_1.move_up();
+       do alien3_2.move_up();
+       do alien1_2.move_up();
+       do alien2_2.move_up();
+       do alien3_3.move_up();
+       do alien2_3.move_up();
+       do alien1_3.move_up();
+
+       do Sys.wait(100); // Adjust wait time for smoother animation
+
+         // Move left
+        do alien3_1.move_down();
+        do alien1_1.move_down();
+        do alien2_1.move_down();
+        do alien3_2.move_down();
+        do alien1_2.move_down();
+        do alien2_2.move_down();
+        do alien3_3.move_down();
+        do alien2_3.move_down();
+        do alien1_3.move_down();
+
+        do Sys.wait(100); // Adjust wait time for smoother animation
+
+        let j = j + 1;
+    }
+    return;
+}
+
+}

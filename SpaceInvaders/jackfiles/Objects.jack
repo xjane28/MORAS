@@ -1,0 +1,171 @@
+class Objects {
+
+   function void drawShip(int x, int y, boolean color){
+        do Screen.setColor(color);
+        do Screen.drawRectangle(x, y, x+20, y+5);
+        do Screen.drawRectangle(x+20, y+5, x+25, y+10);
+        do Screen.drawRectangle(x-5, y+5, x, y+10);
+        do Screen.drawRectangle(x+7, y-5, x+13, y);
+
+        
+        return;
+    }
+
+function void drawAlien1(int x, int y, boolean color) {
+    do Screen.setColor(color);
+
+    // head
+    do Screen.drawRectangle(x + 6, y - 12, x + 12, y - 9);   
+    do Screen.drawRectangle(x + 3, y - 9, x + 15, y - 6);  
+
+    // eyes
+    do Screen.drawRectangle(x + 4, y - 8, x + 6, y - 6);   
+    do Screen.drawRectangle(x + 13, y - 8, x + 15, y - 6);  
+
+    // body
+    do Screen.drawRectangle(x, y, x + 18, y + 3);          
+    do Screen.drawRectangle(x + 3, y - 3, x + 6, y);       
+    do Screen.drawRectangle(x + 12, y - 3, x + 15, y);      
+    do Screen.drawRectangle(x, y - 6, x + 3, y - 3);       
+    do Screen.drawRectangle(x + 15, y - 6, x + 18, y - 3); 
+
+    // arms
+    do Screen.drawRectangle(x - 3, y + 3, x, y + 6);       
+    do Screen.drawRectangle(x + 18, y + 3, x + 21, y + 6); 
+
+    // torso
+    do Screen.drawRectangle(x + 6, y + 3, x + 12, y + 6);   
+    do Screen.drawRectangle(x - 6, y + 6, x + 24, y + 9);  
+    do Screen.drawRectangle(x, y + 9, x + 18, y + 12);      
+
+    // legs
+    do Screen.drawRectangle(x - 6, y + 9, x - 3, y + 15);  
+    do Screen.drawRectangle(x + 21, y + 9, x + 24, y + 15); 
+    do Screen.drawRectangle(x + 3, y + 12, x + 6, y + 15);  
+    do Screen.drawRectangle(x + 12, y + 12, x + 15, y + 15); 
+
+    // feet
+    do Screen.drawRectangle(x, y + 15, x + 3, y + 18);     
+    do Screen.drawRectangle(x + 15, y + 15, x + 18, y + 18); 
+
+    return;
+}
+
+function void drawAlien2(int x, int y, boolean color) {
+    do Screen.setColor(color);
+
+    // head and upper body
+    do Screen.drawRectangle(x + 4, y - 7, x + 20, y - 5);  
+    do Screen.drawRectangle(x + 3, y - 7, x + 21, y - 4);  
+    do Screen.drawRectangle(x + 2, y - 4, x + 22, y);      
+
+    // eyes
+    do Screen.drawRectangle(x + 7, y, x + 10, y + 3);    
+    do Screen.drawRectangle(x + 14, y, x + 17, y + 3);   
+
+    // mouth
+    do Screen.drawRectangle(x + 9, y + 3, x + 12, y + 4); 
+
+    // body
+    do Screen.drawRectangle(x, y + 6, x + 24, y + 10);    
+
+    // arms
+    do Screen.drawRectangle(x - 4, y + 6, x, y + 9);     
+    do Screen.drawRectangle(x + 24, y + 6, x + 26, y + 9); 
+
+    // legs
+    do Screen.drawRectangle(x + 6, y + 10, x + 9, y + 13); 
+    do Screen.drawRectangle(x + 15, y + 10, x + 18, y + 13); 
+
+    // feet
+    do Screen.drawRectangle(x + 4, y + 13, x + 10, y + 13); 
+    do Screen.drawRectangle(x + 13, y + 13, x + 19, y + 13); 
+
+    return;
+}
+
+
+function void drawAlien3(int x, int y, boolean color) {
+    // set the color for the alien
+    do Screen.setColor(color);
+
+    // main body rectangle at the top
+    do Screen.drawRectangle(x+1, y, x + 21, y + 5); 
+
+    // second body segment slightly smaller and above the main body
+    do Screen.drawRectangle(x + 4, y - 5, x + 18, y); 
+
+    // third body segment even smaller and above the second segment
+    do Screen.drawRectangle(x + 7, y - 8, x + 15, y - 5); 
+
+    // single pixel segment at the top for the antenna
+    do Screen.drawRectangle(x + 10, y - 11, x + 10, y - 8); 
+
+    // left leg at the bottom of the main body
+    do Screen.drawRectangle(x+1, y + 5, x + 4, y + 8); 
+
+    // middle leg at the bottom of the main body
+    do Screen.drawRectangle(x + 7, y + 5, x + 15, y + 8); 
+
+    // right leg at the bottom of the main body
+    do Screen.drawRectangle(x + 18, y + 5, x + 21, y + 8); 
+
+    // bottom body segment connecting all the legs
+    do Screen.drawRectangle(x+1, y + 8, x + 21, y + 12); 
+
+    // lower left part of the body
+    do Screen.drawRectangle(x + 4, y + 12, x + 7, y + 15); 
+
+    // lower left foot
+    do Screen.drawRectangle(x+1, y + 15, x + 4, y + 19); 
+
+    // lower right part of the body
+    do Screen.drawRectangle(x + 15, y + 12, x + 18, y + 15); 
+
+    // lower right foot
+    do Screen.drawRectangle(x + 18, y + 15, x + 21, y + 19); 
+
+    return;
+}
+
+
+ function void drawBullet(int x, int y, boolean color) {
+    // Set color for the bullet
+    do Screen.setColor(color);
+
+    // Draw the left cone of the bullet
+    do Screen.drawLine(x - 3, y, x, y - 5);   // Left tip to top left
+    do Screen.drawLine(x, y - 5, x - 3, y - 10); // Top left to base left
+    do Screen.drawLine(x - 3, y - 10, x - 5, y - 5); // Base left to bottom left
+    do Screen.drawLine(x - 5, y - 5, x - 3, y);   // Bottom left to left tip
+
+    // Draw the body of the bullet
+    do Screen.drawLine(x - 3, y, x + 3, y);  // Left end to right end
+    do Screen.drawLine(x + 3, y, x + 5, y - 5); // Right end to top right
+    do Screen.drawLine(x + 5, y - 5, x + 3, y - 10); // Top right to base right
+    do Screen.drawLine(x + 3, y - 10, x + 1, y - 5); // Base right to bottom right
+    do Screen.drawLine(x + 1, y - 5, x + 3, y);  // Bottom right to right end
+
+    // Draw the right cone of the bullet
+    do Screen.drawLine(x + 3, y, x + 8, y);    // Right end to right tip
+    do Screen.drawLine(x + 8, y, x + 5, y - 5);  // Right tip to top right
+    do Screen.drawLine(x + 5, y - 5, x + 7, y - 10); // Top right to base right
+    do Screen.drawLine(x + 7, y - 10, x + 10, y - 5); // Base right to bottom right
+    do Screen.drawLine(x + 10, y - 5, x + 8, y); // Bottom right to right tip
+
+    return;
+}
+
+
+   function void drawCover(int x, int y, boolean color){
+        do Screen.setColor(color);
+        do Screen.drawRectangle(x, y, x+30, y+3);
+        do Screen.drawRectangle(x-5, y+3, x+35, y+6);
+        do Screen.drawRectangle(x-5, y+6, x+5, y+15);
+        do Screen.drawRectangle(x+25, y+6, x+35, y+15);
+
+        return;
+    } 
+
+
+}

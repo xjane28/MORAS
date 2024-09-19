@@ -1,0 +1,84 @@
+class Alien1{
+    field int x;
+    field int y;
+    field boolean alive;
+
+    constructor Alien1 new(int xs, int ys){
+        let x = xs;
+        let y = ys;
+        let alive = true;
+
+        return this;
+    }
+
+    method void dispose(){
+        do Memory.deAlloc(this);
+        
+        return;
+    }
+
+   method void drawif(int x, int y, boolean color){
+        if(alive){
+            do Objects.drawAlien1(x, y, color);
+        }
+        
+        return;
+    }
+
+    method void draw(){
+        do drawif(x, y, true);
+        
+        return;
+    }
+
+    method void move_right(){
+        do drawif(x, y, false);
+        let x = x + 5;
+        do drawif(x, y, true);
+        
+        return;
+    }
+
+    method void move_left(){
+        do drawif(x, y, false);
+        let x = x - 5;
+        do drawif(x, y, true);
+        
+        return;
+    }
+
+    method void move_down(){
+        do drawif(x, y, false);
+        let y = y + 10;
+        do drawif(x, y, true);
+        
+        return;
+    }
+
+     method void move_up(){ 
+        do drawif(x, y, false);
+        let y = y - 10;
+        do drawif(x, y, true);
+        
+        return;
+    }
+
+    method void kill(){
+        do Objects.drawAlien1(x, y, false);
+        let alive = false;
+
+        return;
+    }
+
+    method int getX(){
+        return x;
+    }
+
+    method int getY(){
+        return y;
+    }
+
+    method boolean is_alive(){
+        return alive;
+    }
+}

@@ -1,0 +1,692 @@
+class Game3{
+    field int level;
+    field int score;
+    field Ship ship;
+    field Bullet bullet;
+    field Bullet alien_bullet;
+    field boolean playing;
+
+    field Cover cover1;
+    field Cover cover2;
+    field Cover cover3;
+    field Cover cover4;
+
+    field Alien1 alien_v1_1;
+    field Alien1 alien_v1_2;
+    field Alien1 alien_v1_3;
+    field Alien1 alien_v1_4;
+    field Alien1 alien_v1_5;
+
+    field Alien2 alien_v2_1;
+    field Alien2 alien_v2_2;
+    field Alien2 alien_v2_3;
+    field Alien2 alien_v2_4;
+    field Alien2 alien_v2_5;
+    field Alien2 alien_v2_6;
+    field Alien2 alien_v2_7;
+    field Alien2 alien_v2_8;
+    field Alien2 alien_v2_9;
+    field Alien2 alien_v2_10;
+
+    field Alien3 alien_v3_1;
+    field Alien3 alien_v3_2;
+    field Alien3 alien_v3_3;
+    field Alien3 alien_v3_4;
+    field Alien3 alien_v3_5;
+
+    field int move;
+    field int alienrighttime;
+    field int alienlefttime;
+    field int aliendowntime;
+    field int alienshoottime;
+    field int alienshoottime2;
+    field int alienshoottime3;
+    field int alienbulletboundary;
+    field int first_bullet_x;
+    field int second_bullet_x;
+    field int third_bullet_x;
+    field int lives;
+
+    field int first_alien_row;
+    field int second_alien_row;
+    field int third_alien_row;
+    field int fourth_alien_row;
+    field boolean first_row_moved;
+    field boolean second_row_moved;
+    field boolean third_row_moved;
+    field boolean fourth_row_moved;
+
+    constructor Game3 new(){
+        let lives = 1;
+        let score = 0;
+        let level = 51;
+        let playing = true;
+        let alienrighttime = 0;
+        let alienlefttime = 0;
+        let aliendowntime = 0;
+        let alienshoottime = 0;
+        let alienshoottime2 = 0;
+        let alienshoottime3 = 0;
+        let ship = Ship.new(240, 245);
+        let bullet = Bullet.new();
+        let alien_bullet = Bullet.new();
+
+        let first_alien_row = 5;
+        let second_alien_row = 5;
+        let third_alien_row = 5;
+        let fourth_alien_row = 5;
+        let first_row_moved = false;
+        let second_row_moved = false;
+        let third_row_moved = false;
+        let fourth_row_moved = false;
+
+
+        // Width = Maximum x-coordinate - Minimum x-coordinate
+        // Height = Maximum y-coordinate - Minimum y-coordinate
+
+        // Alien1: wildth 30, height 30
+        // Alien2: wildth 30, height 20
+        // Alien3: wildth 20, height 30
+
+         let alien_v1_1 = Alien1.new(40, 50);
+        let alien_v2_1 = Alien2.new(40, 85);
+        let alien_v2_2 = Alien2.new(40, 118);
+        let alien_v3_1 = Alien3.new(40, 150);
+        
+        let alien_v1_2 = Alien1.new(140, 50);
+        let alien_v2_3 = Alien2.new(140, 85);
+        let alien_v2_4 = Alien2.new(140, 118);
+        let alien_v3_2 = Alien3.new(140, 150);
+
+        let alien_v1_3 = Alien1.new(240, 50);
+        let alien_v2_5 = Alien2.new(240, 85);
+        let alien_v2_6 = Alien2.new(240, 118);
+        let alien_v3_3 = Alien3.new(240, 150);
+
+        let alien_v1_4 = Alien1.new(340, 50);
+        let alien_v2_7 = Alien2.new(340, 85);
+        let alien_v2_8 = Alien2.new(340, 118);
+        let alien_v3_4 = Alien3.new(340, 150);
+
+        let alien_v1_5 = Alien1.new(420, 50);
+        let alien_v2_9 = Alien2.new(420, 85);
+        let alien_v2_10 = Alien2.new(420, 118);
+        let alien_v3_5 = Alien3.new(420, 150);
+
+        let cover1 = Cover.new(90, 220);
+        let cover2 = Cover.new(290, 220);
+        let cover3 = Cover.new(190, 220);
+        let cover4 = Cover.new(390, 220);
+
+        let alienbulletboundary = 177;
+        let first_bullet_x = 50;
+        let second_bullet_x = 70;
+        let third_bullet_x = 90;
+
+        do GameScreen.showGameScreen(level, lives);
+        do Output.moveCursor(1,6);
+        do Output.printInt(score);
+
+        do ship.draw();
+
+        do alien_v1_1.draw();
+        do alien_v2_1.draw();
+        do alien_v2_2.draw();
+        do alien_v3_1.draw();
+    
+        do alien_v1_2.draw();
+        do alien_v2_3.draw();
+        do alien_v2_4.draw();
+        do alien_v3_2.draw();
+
+        do alien_v1_3.draw();
+        do alien_v2_5.draw();
+        do alien_v2_6.draw();
+        do alien_v3_3.draw();
+
+        do alien_v1_4.draw();
+        do alien_v2_7.draw();
+        do alien_v2_8.draw();
+        do alien_v3_4.draw();
+
+        do alien_v1_5.draw();
+        do alien_v2_9.draw();
+        do alien_v2_10.draw();
+        do alien_v3_5.draw();
+        
+        do cover1.draw();
+        do cover2.draw();
+        do cover3.draw();
+        do cover4.draw();
+
+        return this;
+    }
+
+    method void play(){
+        while(playing){
+            let move = Keyboard.keyPressed();
+            if(move = 130){
+                do ship.move_left();
+            }
+            if(move = 132){
+                do ship.move_right();
+            }
+            if(move = 131){
+                if(bullet.is_fired() = false){
+                    do bullet.start_bullet();
+                    do bullet.set_parametars(ship.getX() + 5, ship.getY() - 10);
+                }
+            }
+            if(bullet.is_fired() = true){
+                do bullet.bullet_move_up();
+                do checkCollision();
+            }
+
+            let alienrighttime = alienrighttime + 1;
+            let alienlefttime = alienlefttime + 1;
+            let aliendowntime = aliendowntime + 1;
+            let alienshoottime = alienshoottime + 1;
+            let alienshoottime2 = alienshoottime2 + 1;
+            let alienshoottime3 = alienshoottime3 + 1;
+
+            if(aliendowntime = 150){
+                do alien_v1_1.move_down();
+                do alien_v2_1.move_down();
+                do alien_v2_2.move_down();
+                do alien_v3_1.move_down();
+
+                do alien_v1_2.move_down();
+                do alien_v2_3.move_down();
+                do alien_v2_4.move_down();
+                do alien_v3_2.move_down();
+
+                do alien_v1_3.move_down();
+                do alien_v2_5.move_down();
+                do alien_v2_6.move_down();
+                do alien_v3_3.move_down();
+
+                do alien_v1_4.move_down();
+                do alien_v2_7.move_down();
+                do alien_v2_8.move_down();
+                do alien_v3_4.move_down();
+
+                do alien_v1_5.move_down();
+                do alien_v2_9.move_down();
+                do alien_v2_10.move_down();
+                do alien_v3_5.move_down();
+
+                let aliendowntime = 0;
+                let alienrighttime = 0;
+                let alienlefttime = 0;
+                if(first_alien_row = 0){
+                    if(~first_row_moved){
+                        let alienbulletboundary = alienbulletboundary - 20;
+                        let first_row_moved = true;
+                }
+                }
+                if(second_alien_row = 0){
+                    if(~second_row_moved){
+                        let alienbulletboundary = alienbulletboundary - 20;
+                        let second_row_moved = true;
+                    }
+                }
+                if(third_alien_row = 0){
+                    if(~third_row_moved){
+                        let alienbulletboundary = alienbulletboundary - 20;
+                        let third_row_moved = true;
+                    }
+                }
+                if(fourth_alien_row = 0){
+                    if(~fourth_row_moved){
+                        let alienbulletboundary = alienbulletboundary - 20;
+                        let fourth_row_moved = true;
+                    }
+                }
+                let alienbulletboundary = alienbulletboundary + 10;
+            }
+            if(alienlefttime = 60){
+                do alien_v1_1.move_left();
+                do alien_v2_1.move_left();
+                do alien_v2_2.move_left();
+                do alien_v3_1.move_left();
+                
+                do alien_v1_2.move_left();
+                do alien_v2_3.move_left();
+                do alien_v2_4.move_left();
+                do alien_v3_2.move_left();
+                
+                do alien_v1_3.move_left();
+                do alien_v2_5.move_left();
+                do alien_v2_6.move_left();
+                do alien_v3_3.move_left();
+
+                do alien_v1_4.move_left();
+                do alien_v2_7.move_left();
+                do alien_v2_8.move_left();
+                do alien_v3_4.move_left();
+                
+                do alien_v1_5.move_left();
+                do alien_v2_9.move_left();
+                do alien_v2_10.move_left();
+                do alien_v3_5.move_left();
+
+                let alienlefttime = 0;
+                let alienrighttime = 0;
+            }
+            if(alienrighttime = 30){
+                do alien_v1_1.move_right();
+                do alien_v2_1.move_right();
+                do alien_v2_2.move_right();
+                do alien_v3_1.move_right();
+                
+                do alien_v1_2.move_right();
+                do alien_v2_3.move_right();
+                do alien_v2_4.move_right();
+                do alien_v3_2.move_right();
+
+                do alien_v1_3.move_right();
+                do alien_v2_5.move_right();
+                do alien_v2_6.move_right();
+                do alien_v3_3.move_right();
+
+                do alien_v1_4.move_right();
+                do alien_v2_7.move_right();
+                do alien_v2_8.move_right();
+                do alien_v3_4.move_right();
+
+                do alien_v1_5.move_right();
+                do alien_v2_9.move_right();
+                do alien_v2_10.move_right();
+                do alien_v3_5.move_right();
+
+                let alienrighttime = 0;
+            }
+
+            if(alienbulletboundary < 230){
+                if(alienshoottime = 60){
+                    if(alien_bullet.is_fired() = false){
+                        do alien_bullet.start_bullet();
+                        do alien_bullet.set_parametars(first_bullet_x, alienbulletboundary);
+                        let alienshoottime = 0;
+                        let first_bullet_x = first_bullet_x + 100;
+                        if(first_bullet_x = 450){
+                            let first_bullet_x = 50;
+                        }
+                    }
+                }
+                if(alienshoottime2 = 40){
+                    if(alien_bullet.is_fired() = false){
+                        do alien_bullet.start_bullet();
+                        do alien_bullet.set_parametars(second_bullet_x, alienbulletboundary);
+                        let alienshoottime2 = 0;
+                        let second_bullet_x = second_bullet_x + 100;
+                        if(second_bullet_x > 470){
+                            let second_bullet_x = 70;
+                        }
+                    }
+                }
+                if(alienshoottime3 = 20){
+                    if(alien_bullet.is_fired() = false){
+                        do alien_bullet.start_bullet();
+                        do alien_bullet.set_parametars(third_bullet_x, alienbulletboundary);
+                        let alienshoottime3 = 0;
+                        let third_bullet_x = third_bullet_x + 50;
+                        if(second_bullet_x > 470){
+                            let third_bullet_x = 90;
+                        }
+                    }
+                }
+                if(alien_bullet.is_fired() = true){
+                        do alien_bullet.bullet_move_down();
+                }
+            }
+
+            do alien_shot_ship();
+
+            do cover_destroyed();
+
+            do alien_reached_bottom();
+
+            if(score = 200){
+                let playing = false;
+                do Screen.clearScreen();
+                do StartScreen.animateAliens();
+                do StartScreen.showWin();
+            }
+
+            do Sys.wait(15);
+        }
+
+        return;
+    }
+
+    method void checkCollision(){
+        if((alien_v1_1.is_alive() = true) & (bullet.getX() > (alien_v1_1.getX()-2)) & (bullet.getX() < (alien_v1_1.getX()+35)) &  (bullet.getY() < (alien_v1_1.getY()+10))){
+            do alien_v1_1.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let fourth_alien_row = fourth_alien_row - 1;
+        }
+        if((alien_v2_1.is_alive() = true) & (bullet.getX() > (alien_v2_1.getX()-2)) & (bullet.getX() < (alien_v2_1.getX()+30)) &  (bullet.getY() < (alien_v2_1.getY()+10))){
+            do alien_v2_1.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let first_alien_row = first_alien_row - 1;
+        }
+        if((alien_v2_2.is_alive() = true) & (bullet.getX() > (alien_v2_2.getX()-2)) & (bullet.getX() < (alien_v2_2.getX()+30)) &  (bullet.getY() < (alien_v2_2.getY()+10))){
+            do alien_v2_2.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let second_alien_row = second_alien_row - 1;
+        }
+        if((alien_v3_1.is_alive() = true) & (bullet.getX() > (alien_v3_1.getX()-2)) & (bullet.getX() < (alien_v3_1.getX()+30)) &  (bullet.getY() < (alien_v3_1.getY()+10))){
+            do alien_v3_1.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let third_alien_row = third_alien_row - 1;
+        }
+
+
+        if((alien_v1_2.is_alive() = true) & (bullet.getX() > (alien_v1_2.getX()-2)) & (bullet.getX() < (alien_v1_2.getX()+35)) &  (bullet.getY() < (alien_v1_2.getY()+10))){
+            do alien_v1_2.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let fourth_alien_row = fourth_alien_row - 1;
+        }
+        if((alien_v2_3.is_alive() = true) & (bullet.getX() > (alien_v2_3.getX()-2)) & (bullet.getX() < (alien_v2_3.getX()+30)) &  (bullet.getY() < (alien_v2_3.getY()+10))){
+            do alien_v2_3.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let first_alien_row = first_alien_row - 1;
+        }
+        if((alien_v2_4.is_alive() = true) & (bullet.getX() > (alien_v2_4.getX()-2)) & (bullet.getX() < (alien_v2_4.getX()+30)) &  (bullet.getY() < (alien_v2_4.getY()+10))){
+            do alien_v2_4.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let second_alien_row = second_alien_row - 1;
+        }
+        if((alien_v3_2.is_alive() = true) & (bullet.getX() > (alien_v3_2.getX()-2)) & (bullet.getX() < (alien_v3_2.getX()+30)) &  (bullet.getY() < (alien_v3_2.getY()+10))){
+            do alien_v3_2.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let third_alien_row = third_alien_row - 1;
+        }
+
+
+        if((alien_v1_3.is_alive() = true) & (bullet.getX() > (alien_v1_3.getX()-2)) & (bullet.getX() < (alien_v1_3.getX()+35)) &  (bullet.getY() < (alien_v1_3.getY()+10))){
+            do alien_v1_3.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let fourth_alien_row = fourth_alien_row - 1;
+        }
+        if((alien_v2_5.is_alive() = true) & (bullet.getX() > (alien_v2_5.getX()-2)) & (bullet.getX() < (alien_v2_5.getX()+30)) &  (bullet.getY() < (alien_v2_5.getY()+10))){
+            do alien_v2_5.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let first_alien_row = first_alien_row - 1;
+        }
+        if((alien_v2_6.is_alive() = true) & (bullet.getX() > (alien_v2_6.getX()-2)) & (bullet.getX() < (alien_v2_6.getX()+30)) &  (bullet.getY() < (alien_v2_6.getY()+10))){
+            do alien_v2_6.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let second_alien_row = second_alien_row - 1;
+        }
+        if((alien_v3_3.is_alive() = true) & (bullet.getX() > (alien_v3_3.getX()-2)) & (bullet.getX() < (alien_v3_3.getX()+30)) &  (bullet.getY() < (alien_v3_3.getY()+10))){
+            do alien_v3_3.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let third_alien_row = third_alien_row - 1;
+        }
+
+
+        if((alien_v1_4.is_alive() = true) & (bullet.getX() > (alien_v1_4.getX()-2)) & (bullet.getX() < (alien_v1_4.getX()+35)) &  (bullet.getY() < (alien_v1_4.getY()+10))){
+            do alien_v1_4.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let fourth_alien_row = fourth_alien_row - 1;
+        }
+        if((alien_v2_7.is_alive() = true) & (bullet.getX() > (alien_v2_7.getX()-2)) & (bullet.getX() < (alien_v2_7.getX()+30)) &  (bullet.getY() < (alien_v2_7.getY()+10))){
+            do alien_v2_7.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let first_alien_row = first_alien_row - 1;
+        }
+        if((alien_v2_8.is_alive() = true) & (bullet.getX() > (alien_v2_8.getX()-2)) & (bullet.getX() < (alien_v2_8.getX()+30)) &  (bullet.getY() < (alien_v2_8.getY()+10))){
+            do alien_v2_8.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let second_alien_row = second_alien_row - 1;
+        }
+        if((alien_v3_4.is_alive() = true) & (bullet.getX() > (alien_v3_4.getX()-2)) & (bullet.getX() < (alien_v3_4.getX()+30)) &  (bullet.getY() < (alien_v3_4.getY()+10))){
+            do alien_v3_4.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let third_alien_row = third_alien_row - 1;
+        }
+
+
+        if((alien_v1_5.is_alive() = true) & (bullet.getX() > (alien_v1_5.getX()-2)) & (bullet.getX() < (alien_v1_5.getX()+35)) &  (bullet.getY() < (alien_v1_5.getY()+10))){
+            do alien_v1_5.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let fourth_alien_row = fourth_alien_row - 1;
+        }
+        if((alien_v2_9.is_alive() = true) & (bullet.getX() > (alien_v2_9.getX()-2)) & (bullet.getX() < (alien_v2_9.getX()+30)) &  (bullet.getY() < (alien_v2_9.getY()+10))){
+            do alien_v2_9.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let first_alien_row = first_alien_row - 1;
+        }
+        if((alien_v2_10.is_alive() = true) & (bullet.getX() > (alien_v2_10.getX()-2)) & (bullet.getX() < (alien_v2_10.getX()+30)) &  (bullet.getY() < (alien_v2_10.getY()+10))){
+            do alien_v2_10.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let second_alien_row = second_alien_row - 1;
+        }
+        if((alien_v3_5.is_alive() = true) & (bullet.getX() > (alien_v3_5.getX()-2)) & (bullet.getX() < (alien_v3_5.getX()+30)) &  (bullet.getY() < (alien_v3_5.getY()+10))){
+            do alien_v3_5.kill();
+            do bullet.stop_bullet();
+            let score = score + 10;
+            do GameScreen.update_score(score);
+            let third_alien_row = third_alien_row - 1;
+        }
+
+        return;
+    }
+
+    method void alien_reached_bottom(){
+        if(alien_v1_1.is_alive()){
+            if(alien_v1_1.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v1_2.is_alive()){
+            if(alien_v1_2.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v1_3.is_alive()){
+            if(alien_v1_3.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v1_4.is_alive()){
+            if(alien_v1_4.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v1_5.is_alive()){
+            if(alien_v1_5.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+
+        
+        if(alien_v2_1.is_alive()){
+            if(alien_v2_1.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v2_2.is_alive()){
+            if(alien_v2_2.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v2_3.is_alive()){
+            if(alien_v2_3.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v2_4.is_alive()){
+            if(alien_v2_4.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v2_5.is_alive()){
+            if(alien_v2_5.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v2_6.is_alive()){
+            if(alien_v2_6.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v2_7.is_alive()){
+            if(alien_v2_7.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v2_8.is_alive()){
+            if(alien_v2_8.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v2_9.is_alive()){
+            if(alien_v2_9.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v2_10.is_alive()){
+            if(alien_v2_10.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+
+
+        if(alien_v3_1.is_alive()){
+            if(alien_v3_1.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v3_2.is_alive()){
+            if(alien_v3_2.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v3_3.is_alive()){
+            if(alien_v3_3.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v3_4.is_alive()){
+            if(alien_v3_4.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+        if(alien_v3_5.is_alive()){
+            if(alien_v3_5.getY() > 220){
+                let playing = false;
+                do StartScreen.showGameOver();
+            }
+        }
+
+        return;
+    }
+
+    method void alien_shot_ship(){
+        if(alien_bullet.is_fired() = true){
+            if((alien_bullet.getX() > (ship.getX()-5)) & (alien_bullet.getX() < (ship.getX()+25)) & (alien_bullet.getY() > (ship.getY()-20))){
+                let lives = lives - 1;
+                do GameScreen.update_lives(lives);
+                if (lives = 0) {
+                     let playing = false;
+                     do StartScreen.showGameOver();
+                 }
+            }
+        }
+
+        return;
+    }
+
+    method void cover_destroyed(){
+        if(cover1.is_destroyed() = false){
+            if((alien_bullet.getX() > (cover1.getX()-5)) & (alien_bullet.getX() < (cover1.getX()+30)) & (alien_bullet.getY() > (cover1.getY()-15))){
+                do cover1.destroy();
+                do alien_bullet.stop_bullet();
+                
+            }
+        }
+
+        if(cover2.is_destroyed() = false){
+            if((alien_bullet.getX() > (cover2.getX()-5)) & (alien_bullet.getX() < (cover2.getX()+30)) & (alien_bullet.getY() > (cover2.getY()-15))){
+                do cover2.destroy();
+                do alien_bullet.stop_bullet();
+            }
+        }
+
+        if(cover3.is_destroyed() = false){
+            if((alien_bullet.getX() > (cover3.getX()-5)) & (alien_bullet.getX() < (cover3.getX()+30)) & (alien_bullet.getY() > (cover3.getY()-15))){
+                do cover3.destroy();
+                do alien_bullet.stop_bullet();
+            }
+        }
+
+        if(cover4.is_destroyed() = false){
+            if((alien_bullet.getX() > (cover4.getX()-5)) & (alien_bullet.getX() < (cover4.getX()+30)) & (alien_bullet.getY() > (cover4.getY()-15))){
+                do cover4.destroy();
+                do alien_bullet.stop_bullet();
+            }
+        }
+
+        return;
+    }
+}

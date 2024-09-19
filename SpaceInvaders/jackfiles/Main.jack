@@ -1,0 +1,33 @@
+class Main{
+    function void main(){
+        var char level;
+        var Game game;
+        var Game2 game2;
+        var Game3 game3;
+
+         // Show the game over screen
+        do StartScreen.showGameOver();
+
+        // Show the start screen
+        do StartScreen.show();
+
+        // Read user input for game level
+        let level = Keyboard.readChar();
+        
+        // Initialize and start the appropriate game based on user input
+        if (level = 49){
+            let game = Game.new();
+            do game.play();
+        }
+        if (level = 50){
+            let game2 = Game2.new();
+            do game2.play();
+        }
+        if (level = 51){
+            let game3 = Game3.new();
+            do game3.play();
+        }
+        
+        return;
+    }
+}

@@ -1,0 +1,83 @@
+class Bullet{
+    field int x;
+    field int y;
+    field boolean shot;
+
+    constructor Bullet new(){
+        let x = 255;
+        let y = 511;
+        let shot = false;
+
+        return this;
+    }
+
+    method void dispose(){
+        do Memory.deAlloc(this);
+        
+        return;
+    }
+
+    method void draw(){
+        do Objects.drawBullet(x, y, true);
+    
+        return;
+    }
+
+    method void set_parametars(int sx, int sy){
+        let x = sx;
+        let y = sy;
+
+        return;
+    }
+
+    method void bullet_move_up(){
+        do Objects.drawBullet(x, y, false);
+        do Objects.drawBullet(x, y-6, true);
+        let y = y - 6;
+        if(y < 50){
+            do stop_bullet();
+        }
+
+        return;
+    }
+
+    method void bullet_move_down(){
+        do Objects.drawBullet(x, y, false);
+        do Objects.drawBullet(x, y+6, true);
+        let y = y + 6;
+        if(y = 234){
+            do stop_bullet();
+        }
+        if(y > 250){
+            do stop_bullet();
+        }
+
+        return;
+    }
+
+    method int getX(){
+        return x;
+    }
+
+    method int getY(){
+        return y;
+    }
+
+    method void stop_bullet(){
+        let shot = false;
+        do Objects.drawBullet(x, y, false);
+
+        return;
+    }
+
+    method void start_bullet(){
+        let shot = true;
+
+        return;
+    }
+
+    method boolean is_fired(){
+        return shot;
+    }
+
+}
