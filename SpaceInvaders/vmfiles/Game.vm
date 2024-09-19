@@ -1,0 +1,2305 @@
+function Game.new 0
+push constant 46
+call Memory.alloc 1
+pop pointer 0
+push constant 3
+pop this 37
+push constant 0
+pop this 1
+push constant 49
+pop this 0
+push constant 0
+not
+pop this 5
+push constant 0
+pop this 31
+push constant 0
+pop this 32
+push constant 0
+pop this 33
+push constant 0
+pop this 34
+push constant 240
+push constant 245
+call Ship.new 2
+pop this 2
+call Bullet.new 0
+pop this 3
+call Bullet.new 0
+pop this 4
+push constant 5
+pop this 38
+push constant 5
+pop this 39
+push constant 5
+pop this 40
+push constant 5
+pop this 41
+push constant 0
+pop this 42
+push constant 0
+pop this 43
+push constant 0
+pop this 44
+push constant 0
+pop this 45
+push constant 40
+push constant 50
+call Alien1.new 2
+pop this 10
+push constant 40
+push constant 85
+call Alien2.new 2
+pop this 15
+push constant 40
+push constant 118
+call Alien2.new 2
+pop this 16
+push constant 40
+push constant 150
+call Alien3.new 2
+pop this 25
+push constant 140
+push constant 50
+call Alien1.new 2
+pop this 11
+push constant 140
+push constant 85
+call Alien2.new 2
+pop this 17
+push constant 140
+push constant 118
+call Alien2.new 2
+pop this 18
+push constant 140
+push constant 150
+call Alien3.new 2
+pop this 26
+push constant 240
+push constant 50
+call Alien1.new 2
+pop this 12
+push constant 240
+push constant 85
+call Alien2.new 2
+pop this 19
+push constant 240
+push constant 118
+call Alien2.new 2
+pop this 20
+push constant 240
+push constant 150
+call Alien3.new 2
+pop this 27
+push constant 340
+push constant 50
+call Alien1.new 2
+pop this 13
+push constant 340
+push constant 85
+call Alien2.new 2
+pop this 21
+push constant 340
+push constant 118
+call Alien2.new 2
+pop this 22
+push constant 340
+push constant 150
+call Alien3.new 2
+pop this 28
+push constant 420
+push constant 50
+call Alien1.new 2
+pop this 14
+push constant 420
+push constant 85
+call Alien2.new 2
+pop this 23
+push constant 420
+push constant 118
+call Alien2.new 2
+pop this 24
+push constant 420
+push constant 150
+call Alien3.new 2
+pop this 29
+push constant 90
+push constant 220
+call Cover.new 2
+pop this 6
+push constant 290
+push constant 220
+call Cover.new 2
+pop this 7
+push constant 190
+push constant 220
+call Cover.new 2
+pop this 8
+push constant 390
+push constant 220
+call Cover.new 2
+pop this 9
+push constant 177
+pop this 35
+push constant 50
+pop this 36
+push this 0
+push this 37
+call GameScreen.showGameScreen 2
+pop temp 0
+push constant 1
+push constant 6
+call Output.moveCursor 2
+pop temp 0
+push this 1
+call Output.printInt 1
+pop temp 0
+push this 2
+call Ship.draw 1
+pop temp 0
+push this 10
+call Alien1.draw 1
+pop temp 0
+push this 15
+call Alien2.draw 1
+pop temp 0
+push this 16
+call Alien2.draw 1
+pop temp 0
+push this 25
+call Alien3.draw 1
+pop temp 0
+push this 11
+call Alien1.draw 1
+pop temp 0
+push this 17
+call Alien2.draw 1
+pop temp 0
+push this 18
+call Alien2.draw 1
+pop temp 0
+push this 26
+call Alien3.draw 1
+pop temp 0
+push this 12
+call Alien1.draw 1
+pop temp 0
+push this 19
+call Alien2.draw 1
+pop temp 0
+push this 20
+call Alien2.draw 1
+pop temp 0
+push this 27
+call Alien3.draw 1
+pop temp 0
+push this 13
+call Alien1.draw 1
+pop temp 0
+push this 21
+call Alien2.draw 1
+pop temp 0
+push this 22
+call Alien2.draw 1
+pop temp 0
+push this 28
+call Alien3.draw 1
+pop temp 0
+push this 14
+call Alien1.draw 1
+pop temp 0
+push this 23
+call Alien2.draw 1
+pop temp 0
+push this 24
+call Alien2.draw 1
+pop temp 0
+push this 29
+call Alien3.draw 1
+pop temp 0
+push this 6
+call Cover.draw 1
+pop temp 0
+push this 7
+call Cover.draw 1
+pop temp 0
+push this 8
+call Cover.draw 1
+pop temp 0
+push this 9
+call Cover.draw 1
+pop temp 0
+push pointer 0
+return
+function Game.play 0
+push argument 0
+pop pointer 0
+label WHILE_EXP0
+push this 5
+not
+if-goto WHILE_END0
+call Keyboard.keyPressed 0
+pop this 30
+push this 30
+push constant 130
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 2
+call Ship.move_left 1
+pop temp 0
+label IF_FALSE0
+push this 30
+push constant 132
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+call Ship.move_right 1
+pop temp 0
+label IF_FALSE1
+push this 30
+push constant 131
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 3
+call Bullet.is_fired 1
+push constant 0
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 3
+call Bullet.start_bullet 1
+pop temp 0
+push this 3
+push this 2
+call Ship.getX 1
+push constant 5
+add
+push this 2
+call Ship.getY 1
+push constant 10
+sub
+call Bullet.set_parametars 3
+pop temp 0
+label IF_FALSE3
+label IF_FALSE2
+push this 3
+call Bullet.is_fired 1
+push constant 0
+not
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push this 3
+call Bullet.bullet_move_up 1
+pop temp 0
+push pointer 0
+call Game.checkCollision 1
+pop temp 0
+label IF_FALSE4
+push this 31
+push constant 1
+add
+pop this 31
+push this 32
+push constant 1
+add
+pop this 32
+push this 33
+push constant 1
+add
+pop this 33
+push this 34
+push constant 1
+add
+pop this 34
+push this 33
+push constant 200
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push this 10
+call Alien1.move_down 1
+pop temp 0
+push this 15
+call Alien2.move_down 1
+pop temp 0
+push this 16
+call Alien2.move_down 1
+pop temp 0
+push this 25
+call Alien3.move_down 1
+pop temp 0
+push this 11
+call Alien1.move_down 1
+pop temp 0
+push this 17
+call Alien2.move_down 1
+pop temp 0
+push this 18
+call Alien2.move_down 1
+pop temp 0
+push this 26
+call Alien3.move_down 1
+pop temp 0
+push this 12
+call Alien1.move_down 1
+pop temp 0
+push this 19
+call Alien2.move_down 1
+pop temp 0
+push this 20
+call Alien2.move_down 1
+pop temp 0
+push this 27
+call Alien3.move_down 1
+pop temp 0
+push this 13
+call Alien1.move_down 1
+pop temp 0
+push this 21
+call Alien2.move_down 1
+pop temp 0
+push this 22
+call Alien2.move_down 1
+pop temp 0
+push this 28
+call Alien3.move_down 1
+pop temp 0
+push this 14
+call Alien1.move_down 1
+pop temp 0
+push this 23
+call Alien2.move_down 1
+pop temp 0
+push this 24
+call Alien2.move_down 1
+pop temp 0
+push this 29
+call Alien3.move_down 1
+pop temp 0
+push constant 0
+pop this 33
+push constant 0
+pop this 31
+push constant 0
+pop this 32
+push this 38
+push constant 0
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push this 42
+not
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push this 35
+push constant 20
+sub
+pop this 35
+push constant 0
+not
+pop this 42
+label IF_FALSE7
+label IF_FALSE6
+push this 39
+push constant 0
+eq
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push this 43
+not
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push this 35
+push constant 20
+sub
+pop this 35
+push constant 0
+not
+pop this 43
+label IF_FALSE9
+label IF_FALSE8
+push this 40
+push constant 0
+eq
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push this 44
+not
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push this 35
+push constant 20
+sub
+pop this 35
+push constant 0
+not
+pop this 44
+label IF_FALSE11
+label IF_FALSE10
+push this 41
+push constant 0
+eq
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push this 45
+not
+if-goto IF_TRUE13
+goto IF_FALSE13
+label IF_TRUE13
+push this 35
+push constant 20
+sub
+pop this 35
+push constant 0
+not
+pop this 45
+label IF_FALSE13
+label IF_FALSE12
+push this 35
+push constant 10
+add
+pop this 35
+label IF_FALSE5
+push this 32
+push constant 80
+eq
+if-goto IF_TRUE14
+goto IF_FALSE14
+label IF_TRUE14
+push this 10
+call Alien1.move_left 1
+pop temp 0
+push this 15
+call Alien2.move_left 1
+pop temp 0
+push this 16
+call Alien2.move_left 1
+pop temp 0
+push this 25
+call Alien3.move_left 1
+pop temp 0
+push this 11
+call Alien1.move_left 1
+pop temp 0
+push this 17
+call Alien2.move_left 1
+pop temp 0
+push this 18
+call Alien2.move_left 1
+pop temp 0
+push this 26
+call Alien3.move_left 1
+pop temp 0
+push this 12
+call Alien1.move_left 1
+pop temp 0
+push this 19
+call Alien2.move_left 1
+pop temp 0
+push this 20
+call Alien2.move_left 1
+pop temp 0
+push this 27
+call Alien3.move_left 1
+pop temp 0
+push this 13
+call Alien1.move_left 1
+pop temp 0
+push this 21
+call Alien2.move_left 1
+pop temp 0
+push this 22
+call Alien2.move_left 1
+pop temp 0
+push this 28
+call Alien3.move_left 1
+pop temp 0
+push this 14
+call Alien1.move_left 1
+pop temp 0
+push this 23
+call Alien2.move_left 1
+pop temp 0
+push this 24
+call Alien2.move_left 1
+pop temp 0
+push this 29
+call Alien3.move_left 1
+pop temp 0
+push constant 0
+pop this 32
+push constant 0
+pop this 31
+label IF_FALSE14
+push this 31
+push constant 40
+eq
+if-goto IF_TRUE15
+goto IF_FALSE15
+label IF_TRUE15
+push this 10
+call Alien1.move_right 1
+pop temp 0
+push this 15
+call Alien2.move_right 1
+pop temp 0
+push this 16
+call Alien2.move_right 1
+pop temp 0
+push this 25
+call Alien3.move_right 1
+pop temp 0
+push this 11
+call Alien1.move_right 1
+pop temp 0
+push this 17
+call Alien2.move_right 1
+pop temp 0
+push this 18
+call Alien2.move_right 1
+pop temp 0
+push this 26
+call Alien3.move_right 1
+pop temp 0
+push this 12
+call Alien1.move_right 1
+pop temp 0
+push this 19
+call Alien2.move_right 1
+pop temp 0
+push this 20
+call Alien2.move_right 1
+pop temp 0
+push this 27
+call Alien3.move_right 1
+pop temp 0
+push this 13
+call Alien1.move_right 1
+pop temp 0
+push this 21
+call Alien2.move_right 1
+pop temp 0
+push this 22
+call Alien2.move_right 1
+pop temp 0
+push this 28
+call Alien3.move_right 1
+pop temp 0
+push this 14
+call Alien1.move_right 1
+pop temp 0
+push this 23
+call Alien2.move_right 1
+pop temp 0
+push this 24
+call Alien2.move_right 1
+pop temp 0
+push this 29
+call Alien3.move_right 1
+pop temp 0
+push constant 0
+pop this 31
+label IF_FALSE15
+push this 35
+push constant 230
+lt
+if-goto IF_TRUE16
+goto IF_FALSE16
+label IF_TRUE16
+push this 34
+push constant 80
+eq
+if-goto IF_TRUE17
+goto IF_FALSE17
+label IF_TRUE17
+push this 4
+call Bullet.is_fired 1
+push constant 0
+eq
+if-goto IF_TRUE18
+goto IF_FALSE18
+label IF_TRUE18
+push this 4
+call Bullet.start_bullet 1
+pop temp 0
+push this 4
+push this 36
+push this 35
+call Bullet.set_parametars 3
+pop temp 0
+push constant 0
+pop this 34
+push this 36
+push constant 100
+add
+pop this 36
+push this 36
+push constant 450
+eq
+if-goto IF_TRUE19
+goto IF_FALSE19
+label IF_TRUE19
+push constant 50
+pop this 36
+label IF_FALSE19
+label IF_FALSE18
+label IF_FALSE17
+push this 4
+call Bullet.is_fired 1
+push constant 0
+not
+eq
+if-goto IF_TRUE20
+goto IF_FALSE20
+label IF_TRUE20
+push this 4
+call Bullet.bullet_move_down 1
+pop temp 0
+label IF_FALSE20
+label IF_FALSE16
+push pointer 0
+call Game.alien_shot_ship 1
+pop temp 0
+push pointer 0
+call Game.cover_destroyed 1
+pop temp 0
+push pointer 0
+call Game.alien_reached_bottom 1
+pop temp 0
+push this 1
+push constant 200
+eq
+if-goto IF_TRUE21
+goto IF_FALSE21
+label IF_TRUE21
+push constant 0
+pop this 5
+call Screen.clearScreen 0
+pop temp 0
+call StartScreen.animateAliens 0
+pop temp 0
+call StartScreen.showWin 0
+pop temp 0
+label IF_FALSE21
+push constant 30
+call Sys.wait 1
+pop temp 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Game.checkCollision 0
+push argument 0
+pop pointer 0
+push this 10
+call Alien1.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 10
+call Alien1.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 10
+call Alien1.getX 1
+push constant 35
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 10
+call Alien1.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 10
+call Alien1.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 41
+push constant 1
+sub
+pop this 41
+label IF_FALSE0
+push this 15
+call Alien2.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 15
+call Alien2.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 15
+call Alien2.getX 1
+push constant 30
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 15
+call Alien2.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 15
+call Alien2.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 38
+push constant 1
+sub
+pop this 38
+label IF_FALSE1
+push this 16
+call Alien2.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 16
+call Alien2.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 16
+call Alien2.getX 1
+push constant 30
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 16
+call Alien2.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 16
+call Alien2.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 39
+push constant 1
+sub
+pop this 39
+label IF_FALSE2
+push this 25
+call Alien3.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 25
+call Alien3.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 25
+call Alien3.getX 1
+push constant 30
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 25
+call Alien3.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 25
+call Alien3.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 40
+push constant 1
+sub
+pop this 40
+label IF_FALSE3
+push this 11
+call Alien1.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 11
+call Alien1.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 11
+call Alien1.getX 1
+push constant 35
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 11
+call Alien1.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push this 11
+call Alien1.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 41
+push constant 1
+sub
+pop this 41
+label IF_FALSE4
+push this 17
+call Alien2.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 17
+call Alien2.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 17
+call Alien2.getX 1
+push constant 30
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 17
+call Alien2.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push this 17
+call Alien2.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 38
+push constant 1
+sub
+pop this 38
+label IF_FALSE5
+push this 18
+call Alien2.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 18
+call Alien2.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 18
+call Alien2.getX 1
+push constant 30
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 18
+call Alien2.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push this 18
+call Alien2.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 39
+push constant 1
+sub
+pop this 39
+label IF_FALSE6
+push this 26
+call Alien3.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 26
+call Alien3.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 26
+call Alien3.getX 1
+push constant 30
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 26
+call Alien3.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push this 26
+call Alien3.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 40
+push constant 1
+sub
+pop this 40
+label IF_FALSE7
+push this 12
+call Alien1.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 12
+call Alien1.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 12
+call Alien1.getX 1
+push constant 35
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 12
+call Alien1.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push this 12
+call Alien1.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 41
+push constant 1
+sub
+pop this 41
+label IF_FALSE8
+push this 19
+call Alien2.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 19
+call Alien2.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 19
+call Alien2.getX 1
+push constant 30
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 19
+call Alien2.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push this 19
+call Alien2.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 38
+push constant 1
+sub
+pop this 38
+label IF_FALSE9
+push this 20
+call Alien2.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 20
+call Alien2.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 20
+call Alien2.getX 1
+push constant 30
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 20
+call Alien2.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push this 20
+call Alien2.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 39
+push constant 1
+sub
+pop this 39
+label IF_FALSE10
+push this 27
+call Alien3.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 27
+call Alien3.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 27
+call Alien3.getX 1
+push constant 30
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 27
+call Alien3.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push this 27
+call Alien3.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 40
+push constant 1
+sub
+pop this 40
+label IF_FALSE11
+push this 13
+call Alien1.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 13
+call Alien1.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 13
+call Alien1.getX 1
+push constant 35
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 13
+call Alien1.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push this 13
+call Alien1.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 41
+push constant 1
+sub
+pop this 41
+label IF_FALSE12
+push this 21
+call Alien2.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 21
+call Alien2.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 21
+call Alien2.getX 1
+push constant 30
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 21
+call Alien2.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE13
+goto IF_FALSE13
+label IF_TRUE13
+push this 21
+call Alien2.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 38
+push constant 1
+sub
+pop this 38
+label IF_FALSE13
+push this 22
+call Alien2.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 22
+call Alien2.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 22
+call Alien2.getX 1
+push constant 30
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 22
+call Alien2.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE14
+goto IF_FALSE14
+label IF_TRUE14
+push this 22
+call Alien2.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 39
+push constant 1
+sub
+pop this 39
+label IF_FALSE14
+push this 28
+call Alien3.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 28
+call Alien3.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 28
+call Alien3.getX 1
+push constant 30
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 28
+call Alien3.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE15
+goto IF_FALSE15
+label IF_TRUE15
+push this 28
+call Alien3.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 40
+push constant 1
+sub
+pop this 40
+label IF_FALSE15
+push this 14
+call Alien1.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 14
+call Alien1.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 14
+call Alien1.getX 1
+push constant 35
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 14
+call Alien1.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE16
+goto IF_FALSE16
+label IF_TRUE16
+push this 14
+call Alien1.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 41
+push constant 1
+sub
+pop this 41
+label IF_FALSE16
+push this 23
+call Alien2.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 23
+call Alien2.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 23
+call Alien2.getX 1
+push constant 30
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 23
+call Alien2.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE17
+goto IF_FALSE17
+label IF_TRUE17
+push this 23
+call Alien2.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 38
+push constant 1
+sub
+pop this 38
+label IF_FALSE17
+push this 24
+call Alien2.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 24
+call Alien2.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 24
+call Alien2.getX 1
+push constant 30
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 24
+call Alien2.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE18
+goto IF_FALSE18
+label IF_TRUE18
+push this 24
+call Alien2.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 39
+push constant 1
+sub
+pop this 39
+label IF_FALSE18
+push this 29
+call Alien3.is_alive 1
+push constant 0
+not
+eq
+push this 3
+call Bullet.getX 1
+push this 29
+call Alien3.getX 1
+push constant 2
+sub
+gt
+and
+push this 3
+call Bullet.getX 1
+push this 29
+call Alien3.getX 1
+push constant 30
+add
+lt
+and
+push this 3
+call Bullet.getY 1
+push this 29
+call Alien3.getY 1
+push constant 10
+add
+lt
+and
+if-goto IF_TRUE19
+goto IF_FALSE19
+label IF_TRUE19
+push this 29
+call Alien3.kill 1
+pop temp 0
+push this 3
+call Bullet.stop_bullet 1
+pop temp 0
+push this 1
+push constant 10
+add
+pop this 1
+push this 1
+call GameScreen.update_score 1
+pop temp 0
+push this 40
+push constant 1
+sub
+pop this 40
+label IF_FALSE19
+push constant 0
+return
+function Game.alien_reached_bottom 0
+push argument 0
+pop pointer 0
+push this 10
+call Alien1.is_alive 1
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 10
+call Alien1.getY 1
+push constant 220
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE1
+label IF_FALSE0
+push this 11
+call Alien1.is_alive 1
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 11
+call Alien1.getY 1
+push constant 220
+gt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE3
+label IF_FALSE2
+push this 12
+call Alien1.is_alive 1
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push this 12
+call Alien1.getY 1
+push constant 220
+gt
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE5
+label IF_FALSE4
+push this 13
+call Alien1.is_alive 1
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push this 13
+call Alien1.getY 1
+push constant 220
+gt
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE7
+label IF_FALSE6
+push this 14
+call Alien1.is_alive 1
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push this 14
+call Alien1.getY 1
+push constant 220
+gt
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE9
+label IF_FALSE8
+push this 15
+call Alien2.is_alive 1
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push this 15
+call Alien2.getY 1
+push constant 220
+gt
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE11
+label IF_FALSE10
+push this 16
+call Alien2.is_alive 1
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push this 16
+call Alien2.getY 1
+push constant 220
+gt
+if-goto IF_TRUE13
+goto IF_FALSE13
+label IF_TRUE13
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE13
+label IF_FALSE12
+push this 17
+call Alien2.is_alive 1
+if-goto IF_TRUE14
+goto IF_FALSE14
+label IF_TRUE14
+push this 17
+call Alien2.getY 1
+push constant 220
+gt
+if-goto IF_TRUE15
+goto IF_FALSE15
+label IF_TRUE15
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE15
+label IF_FALSE14
+push this 18
+call Alien2.is_alive 1
+if-goto IF_TRUE16
+goto IF_FALSE16
+label IF_TRUE16
+push this 18
+call Alien2.getY 1
+push constant 220
+gt
+if-goto IF_TRUE17
+goto IF_FALSE17
+label IF_TRUE17
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE17
+label IF_FALSE16
+push this 19
+call Alien2.is_alive 1
+if-goto IF_TRUE18
+goto IF_FALSE18
+label IF_TRUE18
+push this 19
+call Alien2.getY 1
+push constant 220
+gt
+if-goto IF_TRUE19
+goto IF_FALSE19
+label IF_TRUE19
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE19
+label IF_FALSE18
+push this 20
+call Alien2.is_alive 1
+if-goto IF_TRUE20
+goto IF_FALSE20
+label IF_TRUE20
+push this 20
+call Alien2.getY 1
+push constant 220
+gt
+if-goto IF_TRUE21
+goto IF_FALSE21
+label IF_TRUE21
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE21
+label IF_FALSE20
+push this 21
+call Alien2.is_alive 1
+if-goto IF_TRUE22
+goto IF_FALSE22
+label IF_TRUE22
+push this 21
+call Alien2.getY 1
+push constant 220
+gt
+if-goto IF_TRUE23
+goto IF_FALSE23
+label IF_TRUE23
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE23
+label IF_FALSE22
+push this 22
+call Alien2.is_alive 1
+if-goto IF_TRUE24
+goto IF_FALSE24
+label IF_TRUE24
+push this 22
+call Alien2.getY 1
+push constant 220
+gt
+if-goto IF_TRUE25
+goto IF_FALSE25
+label IF_TRUE25
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE25
+label IF_FALSE24
+push this 23
+call Alien2.is_alive 1
+if-goto IF_TRUE26
+goto IF_FALSE26
+label IF_TRUE26
+push this 23
+call Alien2.getY 1
+push constant 220
+gt
+if-goto IF_TRUE27
+goto IF_FALSE27
+label IF_TRUE27
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE27
+label IF_FALSE26
+push this 24
+call Alien2.is_alive 1
+if-goto IF_TRUE28
+goto IF_FALSE28
+label IF_TRUE28
+push this 24
+call Alien2.getY 1
+push constant 220
+gt
+if-goto IF_TRUE29
+goto IF_FALSE29
+label IF_TRUE29
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE29
+label IF_FALSE28
+push this 25
+call Alien3.is_alive 1
+if-goto IF_TRUE30
+goto IF_FALSE30
+label IF_TRUE30
+push this 25
+call Alien3.getY 1
+push constant 220
+gt
+if-goto IF_TRUE31
+goto IF_FALSE31
+label IF_TRUE31
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE31
+label IF_FALSE30
+push this 26
+call Alien3.is_alive 1
+if-goto IF_TRUE32
+goto IF_FALSE32
+label IF_TRUE32
+push this 26
+call Alien3.getY 1
+push constant 220
+gt
+if-goto IF_TRUE33
+goto IF_FALSE33
+label IF_TRUE33
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE33
+label IF_FALSE32
+push this 27
+call Alien3.is_alive 1
+if-goto IF_TRUE34
+goto IF_FALSE34
+label IF_TRUE34
+push this 27
+call Alien3.getY 1
+push constant 220
+gt
+if-goto IF_TRUE35
+goto IF_FALSE35
+label IF_TRUE35
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE35
+label IF_FALSE34
+push this 28
+call Alien3.is_alive 1
+if-goto IF_TRUE36
+goto IF_FALSE36
+label IF_TRUE36
+push this 28
+call Alien3.getY 1
+push constant 220
+gt
+if-goto IF_TRUE37
+goto IF_FALSE37
+label IF_TRUE37
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE37
+label IF_FALSE36
+push this 29
+call Alien3.is_alive 1
+if-goto IF_TRUE38
+goto IF_FALSE38
+label IF_TRUE38
+push this 29
+call Alien3.getY 1
+push constant 220
+gt
+if-goto IF_TRUE39
+goto IF_FALSE39
+label IF_TRUE39
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE39
+label IF_FALSE38
+push constant 0
+return
+function Game.alien_shot_ship 0
+push argument 0
+pop pointer 0
+push this 4
+call Bullet.is_fired 1
+push constant 0
+not
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 4
+call Bullet.getX 1
+push this 2
+call Ship.getX 1
+push constant 5
+sub
+gt
+push this 4
+call Bullet.getX 1
+push this 2
+call Ship.getX 1
+push constant 25
+add
+lt
+and
+push this 4
+call Bullet.getY 1
+push this 2
+call Ship.getY 1
+push constant 20
+sub
+gt
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 37
+push constant 1
+sub
+pop this 37
+push this 37
+call GameScreen.update_lives 1
+pop temp 0
+push this 37
+push constant 0
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+pop this 5
+call StartScreen.showGameOver 0
+pop temp 0
+label IF_FALSE2
+label IF_FALSE1
+label IF_FALSE0
+push constant 0
+return
+function Game.cover_destroyed 0
+push argument 0
+pop pointer 0
+push this 6
+call Cover.is_destroyed 1
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 4
+call Bullet.getX 1
+push this 6
+call Cover.getX 1
+push constant 5
+sub
+gt
+push this 4
+call Bullet.getX 1
+push this 6
+call Cover.getX 1
+push constant 30
+add
+lt
+and
+push this 4
+call Bullet.getY 1
+push this 6
+call Cover.getY 1
+push constant 15
+sub
+gt
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 6
+call Cover.destroy 1
+pop temp 0
+push this 4
+call Bullet.stop_bullet 1
+pop temp 0
+label IF_FALSE1
+label IF_FALSE0
+push this 7
+call Cover.is_destroyed 1
+push constant 0
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 4
+call Bullet.getX 1
+push this 7
+call Cover.getX 1
+push constant 5
+sub
+gt
+push this 4
+call Bullet.getX 1
+push this 7
+call Cover.getX 1
+push constant 30
+add
+lt
+and
+push this 4
+call Bullet.getY 1
+push this 7
+call Cover.getY 1
+push constant 15
+sub
+gt
+and
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 7
+call Cover.destroy 1
+pop temp 0
+push this 4
+call Bullet.stop_bullet 1
+pop temp 0
+label IF_FALSE3
+label IF_FALSE2
+push this 8
+call Cover.is_destroyed 1
+push constant 0
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push this 4
+call Bullet.getX 1
+push this 8
+call Cover.getX 1
+push constant 5
+sub
+gt
+push this 4
+call Bullet.getX 1
+push this 8
+call Cover.getX 1
+push constant 30
+add
+lt
+and
+push this 4
+call Bullet.getY 1
+push this 8
+call Cover.getY 1
+push constant 15
+sub
+gt
+and
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push this 8
+call Cover.destroy 1
+pop temp 0
+push this 4
+call Bullet.stop_bullet 1
+pop temp 0
+label IF_FALSE5
+label IF_FALSE4
+push this 9
+call Cover.is_destroyed 1
+push constant 0
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push this 4
+call Bullet.getX 1
+push this 9
+call Cover.getX 1
+push constant 5
+sub
+gt
+push this 4
+call Bullet.getX 1
+push this 9
+call Cover.getX 1
+push constant 30
+add
+lt
+and
+push this 4
+call Bullet.getY 1
+push this 9
+call Cover.getY 1
+push constant 15
+sub
+gt
+and
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push this 9
+call Cover.destroy 1
+pop temp 0
+push this 4
+call Bullet.stop_bullet 1
+pop temp 0
+label IF_FALSE7
+label IF_FALSE6
+push constant 0
+return

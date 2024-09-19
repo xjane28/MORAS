@@ -1,0 +1,185 @@
+function Ship.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push pointer 0
+return
+function Ship.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Ship.draw 0
+push argument 0
+pop pointer 0
+push this 0
+push this 1
+push constant 0
+not
+call Objects.drawShip 3
+pop temp 0
+push constant 0
+return
+function Ship.move_left 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 2
+sub
+push constant 50
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 0
+push this 1
+push constant 0
+call Objects.drawShip 3
+pop temp 0
+push this 0
+push constant 2
+sub
+pop this 0
+push this 0
+push this 1
+push constant 0
+not
+call Objects.drawShip 3
+pop temp 0
+label IF_FALSE0
+push this 0
+push constant 2
+sub
+push constant 50
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 0
+push this 1
+push constant 0
+call Objects.drawShip 3
+pop temp 0
+push constant 420
+pop this 0
+push this 0
+push this 1
+push constant 0
+not
+call Objects.drawShip 3
+pop temp 0
+label IF_FALSE1
+push this 0
+push constant 2
+sub
+push constant 50
+lt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 0
+push this 1
+push constant 0
+call Objects.drawShip 3
+pop temp 0
+push constant 420
+pop this 0
+push this 0
+push this 1
+push constant 0
+not
+call Objects.drawShip 3
+pop temp 0
+label IF_FALSE2
+push constant 0
+return
+function Ship.move_right 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 2
+add
+push constant 430
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 0
+push this 1
+push constant 0
+call Objects.drawShip 3
+pop temp 0
+push this 0
+push constant 2
+add
+pop this 0
+push this 0
+push this 1
+push constant 0
+not
+call Objects.drawShip 3
+pop temp 0
+label IF_FALSE0
+push this 0
+push constant 2
+add
+push constant 430
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 0
+push this 1
+push constant 0
+call Objects.drawShip 3
+pop temp 0
+push constant 45
+pop this 0
+push this 0
+push this 1
+push constant 0
+not
+call Objects.drawShip 3
+pop temp 0
+label IF_FALSE1
+push this 0
+push constant 2
+add
+push constant 430
+gt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 0
+push this 1
+push constant 0
+call Objects.drawShip 3
+pop temp 0
+push constant 45
+pop this 0
+push this 0
+push this 1
+push constant 0
+not
+call Objects.drawShip 3
+pop temp 0
+label IF_FALSE2
+push constant 0
+return
+function Ship.getX 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Ship.getY 0
+push argument 0
+pop pointer 0
+push this 1
+return

@@ -1,0 +1,45 @@
+function Main.main 4
+call StartScreen.showGameOver 0
+pop temp 0
+call StartScreen.show 0
+pop temp 0
+call Keyboard.readChar 0
+pop local 0
+push local 0
+push constant 49
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+call Game.new 0
+pop local 1
+push local 1
+call Game.play 1
+pop temp 0
+label IF_FALSE0
+push local 0
+push constant 50
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+call Game2.new 0
+pop local 2
+push local 2
+call Game2.play 1
+pop temp 0
+label IF_FALSE1
+push local 0
+push constant 51
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+call Game3.new 0
+pop local 3
+push local 3
+call Game3.play 1
+pop temp 0
+label IF_FALSE2
+push constant 0
+return

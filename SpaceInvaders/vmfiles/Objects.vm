@@ -1,0 +1,908 @@
+function Objects.drawShip 0
+push argument 2
+call Screen.setColor 1
+pop temp 0
+push argument 0
+push argument 1
+push argument 0
+push constant 20
+add
+push argument 1
+push constant 5
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 20
+add
+push argument 1
+push constant 5
+add
+push argument 0
+push constant 25
+add
+push argument 1
+push constant 10
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 5
+sub
+push argument 1
+push constant 5
+add
+push argument 0
+push argument 1
+push constant 10
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 7
+add
+push argument 1
+push constant 5
+sub
+push argument 0
+push constant 13
+add
+push argument 1
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Objects.drawAlien1 0
+push argument 2
+call Screen.setColor 1
+pop temp 0
+push argument 0
+push constant 6
+add
+push argument 1
+push constant 12
+sub
+push argument 0
+push constant 12
+add
+push argument 1
+push constant 9
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 3
+add
+push argument 1
+push constant 9
+sub
+push argument 0
+push constant 15
+add
+push argument 1
+push constant 6
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 4
+add
+push argument 1
+push constant 8
+sub
+push argument 0
+push constant 6
+add
+push argument 1
+push constant 6
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 13
+add
+push argument 1
+push constant 8
+sub
+push argument 0
+push constant 15
+add
+push argument 1
+push constant 6
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push argument 1
+push argument 0
+push constant 18
+add
+push argument 1
+push constant 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 3
+add
+push argument 1
+push constant 3
+sub
+push argument 0
+push constant 6
+add
+push argument 1
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 12
+add
+push argument 1
+push constant 3
+sub
+push argument 0
+push constant 15
+add
+push argument 1
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push argument 1
+push constant 6
+sub
+push argument 0
+push constant 3
+add
+push argument 1
+push constant 3
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 15
+add
+push argument 1
+push constant 6
+sub
+push argument 0
+push constant 18
+add
+push argument 1
+push constant 3
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 3
+sub
+push argument 1
+push constant 3
+add
+push argument 0
+push argument 1
+push constant 6
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 18
+add
+push argument 1
+push constant 3
+add
+push argument 0
+push constant 21
+add
+push argument 1
+push constant 6
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 6
+add
+push argument 1
+push constant 3
+add
+push argument 0
+push constant 12
+add
+push argument 1
+push constant 6
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 6
+sub
+push argument 1
+push constant 6
+add
+push argument 0
+push constant 24
+add
+push argument 1
+push constant 9
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push argument 1
+push constant 9
+add
+push argument 0
+push constant 18
+add
+push argument 1
+push constant 12
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 6
+sub
+push argument 1
+push constant 9
+add
+push argument 0
+push constant 3
+sub
+push argument 1
+push constant 15
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 21
+add
+push argument 1
+push constant 9
+add
+push argument 0
+push constant 24
+add
+push argument 1
+push constant 15
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 3
+add
+push argument 1
+push constant 12
+add
+push argument 0
+push constant 6
+add
+push argument 1
+push constant 15
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 12
+add
+push argument 1
+push constant 12
+add
+push argument 0
+push constant 15
+add
+push argument 1
+push constant 15
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push argument 1
+push constant 15
+add
+push argument 0
+push constant 3
+add
+push argument 1
+push constant 18
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 15
+add
+push argument 1
+push constant 15
+add
+push argument 0
+push constant 18
+add
+push argument 1
+push constant 18
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Objects.drawAlien2 0
+push argument 2
+call Screen.setColor 1
+pop temp 0
+push argument 0
+push constant 4
+add
+push argument 1
+push constant 7
+sub
+push argument 0
+push constant 20
+add
+push argument 1
+push constant 5
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 3
+add
+push argument 1
+push constant 7
+sub
+push argument 0
+push constant 21
+add
+push argument 1
+push constant 4
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 2
+add
+push argument 1
+push constant 4
+sub
+push argument 0
+push constant 22
+add
+push argument 1
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 7
+add
+push argument 1
+push argument 0
+push constant 10
+add
+push argument 1
+push constant 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 14
+add
+push argument 1
+push argument 0
+push constant 17
+add
+push argument 1
+push constant 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 9
+add
+push argument 1
+push constant 3
+add
+push argument 0
+push constant 12
+add
+push argument 1
+push constant 4
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push argument 1
+push constant 6
+add
+push argument 0
+push constant 24
+add
+push argument 1
+push constant 10
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 4
+sub
+push argument 1
+push constant 6
+add
+push argument 0
+push argument 1
+push constant 9
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 24
+add
+push argument 1
+push constant 6
+add
+push argument 0
+push constant 26
+add
+push argument 1
+push constant 9
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 6
+add
+push argument 1
+push constant 10
+add
+push argument 0
+push constant 9
+add
+push argument 1
+push constant 13
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 15
+add
+push argument 1
+push constant 10
+add
+push argument 0
+push constant 18
+add
+push argument 1
+push constant 13
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 4
+add
+push argument 1
+push constant 13
+add
+push argument 0
+push constant 10
+add
+push argument 1
+push constant 13
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 13
+add
+push argument 1
+push constant 13
+add
+push argument 0
+push constant 19
+add
+push argument 1
+push constant 13
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Objects.drawAlien3 0
+push argument 2
+call Screen.setColor 1
+pop temp 0
+push argument 0
+push constant 1
+add
+push argument 1
+push argument 0
+push constant 21
+add
+push argument 1
+push constant 5
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 4
+add
+push argument 1
+push constant 5
+sub
+push argument 0
+push constant 18
+add
+push argument 1
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 7
+add
+push argument 1
+push constant 8
+sub
+push argument 0
+push constant 15
+add
+push argument 1
+push constant 5
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 10
+add
+push argument 1
+push constant 11
+sub
+push argument 0
+push constant 10
+add
+push argument 1
+push constant 8
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 1
+add
+push argument 1
+push constant 5
+add
+push argument 0
+push constant 4
+add
+push argument 1
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 7
+add
+push argument 1
+push constant 5
+add
+push argument 0
+push constant 15
+add
+push argument 1
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 18
+add
+push argument 1
+push constant 5
+add
+push argument 0
+push constant 21
+add
+push argument 1
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 1
+add
+push argument 1
+push constant 8
+add
+push argument 0
+push constant 21
+add
+push argument 1
+push constant 12
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 4
+add
+push argument 1
+push constant 12
+add
+push argument 0
+push constant 7
+add
+push argument 1
+push constant 15
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 1
+add
+push argument 1
+push constant 15
+add
+push argument 0
+push constant 4
+add
+push argument 1
+push constant 19
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 15
+add
+push argument 1
+push constant 12
+add
+push argument 0
+push constant 18
+add
+push argument 1
+push constant 15
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 18
+add
+push argument 1
+push constant 15
+add
+push argument 0
+push constant 21
+add
+push argument 1
+push constant 19
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Objects.drawBullet 0
+push argument 2
+call Screen.setColor 1
+pop temp 0
+push argument 0
+push constant 3
+sub
+push argument 1
+push argument 0
+push argument 1
+push constant 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push argument 0
+push argument 1
+push constant 5
+sub
+push argument 0
+push constant 3
+sub
+push argument 1
+push constant 10
+sub
+call Screen.drawLine 4
+pop temp 0
+push argument 0
+push constant 3
+sub
+push argument 1
+push constant 10
+sub
+push argument 0
+push constant 5
+sub
+push argument 1
+push constant 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push argument 0
+push constant 5
+sub
+push argument 1
+push constant 5
+sub
+push argument 0
+push constant 3
+sub
+push argument 1
+call Screen.drawLine 4
+pop temp 0
+push argument 0
+push constant 3
+sub
+push argument 1
+push argument 0
+push constant 3
+add
+push argument 1
+call Screen.drawLine 4
+pop temp 0
+push argument 0
+push constant 3
+add
+push argument 1
+push argument 0
+push constant 5
+add
+push argument 1
+push constant 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push argument 0
+push constant 5
+add
+push argument 1
+push constant 5
+sub
+push argument 0
+push constant 3
+add
+push argument 1
+push constant 10
+sub
+call Screen.drawLine 4
+pop temp 0
+push argument 0
+push constant 3
+add
+push argument 1
+push constant 10
+sub
+push argument 0
+push constant 1
+add
+push argument 1
+push constant 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push argument 0
+push constant 1
+add
+push argument 1
+push constant 5
+sub
+push argument 0
+push constant 3
+add
+push argument 1
+call Screen.drawLine 4
+pop temp 0
+push argument 0
+push constant 3
+add
+push argument 1
+push argument 0
+push constant 8
+add
+push argument 1
+call Screen.drawLine 4
+pop temp 0
+push argument 0
+push constant 8
+add
+push argument 1
+push argument 0
+push constant 5
+add
+push argument 1
+push constant 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push argument 0
+push constant 5
+add
+push argument 1
+push constant 5
+sub
+push argument 0
+push constant 7
+add
+push argument 1
+push constant 10
+sub
+call Screen.drawLine 4
+pop temp 0
+push argument 0
+push constant 7
+add
+push argument 1
+push constant 10
+sub
+push argument 0
+push constant 10
+add
+push argument 1
+push constant 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push argument 0
+push constant 10
+add
+push argument 1
+push constant 5
+sub
+push argument 0
+push constant 8
+add
+push argument 1
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Objects.drawCover 0
+push argument 2
+call Screen.setColor 1
+pop temp 0
+push argument 0
+push argument 1
+push argument 0
+push constant 30
+add
+push argument 1
+push constant 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 5
+sub
+push argument 1
+push constant 3
+add
+push argument 0
+push constant 35
+add
+push argument 1
+push constant 6
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 5
+sub
+push argument 1
+push constant 6
+add
+push argument 0
+push constant 5
+add
+push argument 1
+push constant 15
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 0
+push constant 25
+add
+push argument 1
+push constant 6
+add
+push argument 0
+push constant 35
+add
+push argument 1
+push constant 15
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
